@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="7dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorPrimary"
+                    android:text="From,"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLength="25"
+                    android:layout_marginTop="2dp"
+                    android:text="name"
+                    android:id="@+id/post_name"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLength="25"
+                    android:text="community"
+                    android:id="@+id/post_community"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Location"
+                    android:id="@+id/post_location"/>
+            </LinearLayout>
+
+
+       <RelativeLayout
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:gravity="right"
+           android:layout_gravity="right"
+           android:layout_margin="5dp"
+           android:orientation="vertical">
+
+
+           <ImageView
+               android:layout_width="47dp"
+               android:layout_height="55dp"
+               android:layout_alignParentRight="true"
+               android:id="@+id/inside_view"
+               android:layout_marginRight="5dp"
+               android:layout_marginTop="7dp"
+               android:src="@drawable/frame"
+               android:adjustViewBounds="true"
+               android:background="#00ffffff"
+               android:scaleType="fitXY" />
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/post_image"
+               android:layout_margin="4dp"
+               android:layout_alignBottom="@id/inside_view"
+               android:layout_alignLeft="@id/inside_view"
+               android:layout_alignTop="@id/inside_view"
+               android:layout_alignRight="@id/inside_view"
+               android:scaleType="fitCenter"
+               android:src="@drawable/ic_person_"
+               android:adjustViewBounds="true"
+               android:background="#00ffffff" />
+
+
+       </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="To,"
+                android:textSize="14dp"
+                android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/post_title"
+                    android:maxLength="25"
+                    android:text="Dear"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/post_community_sent"
+                    android:maxLength="25"
+                    android:text="community"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="10dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pin:"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/post_pin"
+                    android:text="campus"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="5dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="2dp"
+    android:layout_margin="3dp">
+
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="13dp"
+        android:id="@+id/envelope"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/ic_views"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/post_count"
+        android:layout_marginLeft="3dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="11dp"
+        android:text="Reads"
+        android:layout_marginLeft="3dp"/>
+
+
+    <com.github.curioustechizen.ago.RelativeTimeTextView
+        android:id="@+id/timestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:gravity="right"
+        android:layout_marginRight="7dp"
+        android:textSize="11dp"
+        android:text="timestamp" />
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.campusmail.campusmail">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/cm_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignupActivity"
+            android:label="Signup" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="Reset" />
+        <activity
+            android:name=".MainActivity"
+            android:label="MailBox"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PostActivity"
+            android:label="" />
+        <activity
+            android:name=".CommentsActivity"
+            android:label="Comments" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="Posts"
+            android:theme="@style/AppTheme.ActionBar.Transparent" />
+        <activity
+            android:name=".OpenLetterActivity"
+            android:label=""
+            android:theme="@style/AppTheme.ActionBar.Transparent" />
+        <activity
+            android:name=".EditActivity"
+            android:label="Account Setup" />
+        <activity
+            android:name=".Profile_Activity"
+            android:label="Profile" />
+        <activity
+            android:name=".ViewProfileActivity"
+            android:label="Profile" />
+        <activity
+            android:name=".ViewLetterProfileActivity"
+            android:label="Profile" />
+        <activity
+            android:name=".DirectMail"
+            android:label="Inbox" />
+        <activity
+            android:name=".SearchActivity"
+            android:label="" />
+        <activity
+            android:name=".SendDM"
+            android:label="" />
+        <activity
+            android:name=".SendDMComments"
+            android:label="" />
+        <activity
+            android:name=".DmChatActivity"
+            android:label="" />
+        <activity
+            android:name=".ChooseCountry"
+            android:label="Choose your country"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Splashscreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".OpenLetterWithPhotoActivity"
+            android:label=""
+            android:theme="@style/AppTheme.ActionBar.Transparent" />
+        <activity
+            android:name=".CMSearchActivity"
+            android:label="" />
+        <activity
+            android:name=".SendPhotoActivity"
+            android:label="Send photo"
+            android:theme="@style/AppTheme.ActionBar.Transparent" />
+        <activity
+            android:name=".ProfileEditActivity"
+            android:label="Edit" />
+        <activity
+            android:name=".FindComradesActivity"
+            android:label="" />
+        <activity
+            android:name=".ViewComradeProfileActivity"
+            android:label="Profile" />
+        <activity
+            android:name=".ComradeDM"
+            android:label="Post" />
+        <activity
+            android:name=".ViewProfileDMChatActivity"
+            android:label="Profile" />
+        <activity
+            android:name=".SendDMChat"
+            android:label="" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings" />
+        <activity
+            android:name=".CMSearchResult"
+            android:label="" />
+        <activity
+            android:name=".FindComradesResult"
+            android:label="" />
+        <activity
+            android:name=".LetterSearchActivity"
+            android:label="" />
+        <activity
+            android:name=".LetterSearchResult"
+            android:label="" />
+        <activity
+            android:name=".ChooseCommunity"
+            android:label="Choose community" />
+        <activity
+            android:name=".SentDMActivity"
+            android:label="Sent mail&apos;s" />
+        <activity
+            android:name=".ViewDirectmailActivity"
+            android:label="Profile"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,522 @@
+<resources>
+    <string name="app_name">CampusMail</string>
+
+
+    <string name="action_sign_in_short">Register</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="send_password_reset_email">Send Password reset email</string>
+    <string name="remove_user">Remove user</string>
+    <string name="new_pass">New Password</string>
+    <string name="title_activity_profile">Firebase</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Not a member? Get registered in Firebase now!</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">Forgot your password?</string>
+    <string name="btn_reset_password">Reset Password</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email">New Email</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string-array name="kenya_choose_community">
+
+        <item name="AUA">Adventist University of Africa</item>
+        <item name="AIA">Africa International University</item>
+        <item name="ANU">Africa Nazarene University</item>
+        <item name="CUEA">Catholic University of Eastern Africa</item>
+        <item name="DU">Co-operative College of Kenya</item>
+        <item name="DU">Coast Institute of Technology</item>
+        <item name="CU">Chuka University</item>
+        <item name="DU">Dayster University</item>
+        <item name="DEDAN">Dedan Kimathi University of Technology </item>
+        <item name="EU">Egerton University</item>
+        <item name="DU">East African School of Aviation</item>
+        <item name="GLUK">Great Lakes University of Kisumu</item>
+        <item name="GU">Gretsa University</item>
+        <item name="IU">Inoorero University</item>
+        <item name="DU">Jaramogi Oginga Odinga University of Science &amp; Technology</item>
+        <item name="JKUAT">Jomo Kenyatta University of Agriculture &amp; Technology</item>
+        <item name="KU">Kabarak University</item>
+        <item name="KU">Karatina University</item>
+        <item name="DU">KCA University</item>
+        <item name="DU">Kenya Highlands Evangelical University</item>
+        <item name="DU">Kenya Methodist University</item>
+        <item name="DU">Kenya Institute of Mass Communication</item>
+        <item name="DU">Kenya Madical Training College</item>
+        <item name="DU">Kenyatta University</item>
+        <item name="EU">Kibabii University</item>
+        <item name="DU">Kiriri Womens University of Science &amp; Technology</item>
+        <item name="EU">Kisii University</item>
+        <item name="EU">Laikipia University</item>
+        <item name="EU">Lukenya University</item>
+        <item name="EU">Maasai Mara University</item>
+        <item name="EU">Management University of Africa</item>
+        <item name="EU">Maseno University</item>
+        <item name="EU">Masinde Muliro University of Science &amp; Technology</item>
+        <item name="EU">Meru University of Science &amp; Technology</item>
+        <item name="EU">Moi University</item>
+        <item name="EU">Mt Kenya University</item>
+        <item name="EU">MultiMedia University of Kenya</item>
+        <item name="EU">Pan Africa Christian University</item>
+        <item name="EU">Pioneer International University</item>
+        <item name="EU">Pwani University</item>
+        <item name="EU">Riara University</item>
+        <item name="EU">Scott University</item>
+        <item name="EU">South Eastern Kenya University</item>
+        <item name="EU">St. Pauls University</item>
+        <item name="Strathmore">Strathmore University</item>
+        <item name="EU">Technical University of Kenya</item>
+        <item name="EU">Technical University of Mombasa</item>
+        <item name="EU">The East Africa University</item>
+        <item name="EU">Umma University</item>
+        <item name="EU">United States International University</item>
+        <item name="EU">University of Eastern Africa, Baraton</item>
+        <item name="EU">Kisii University</item>
+        <item name="EU">University of Eldoret</item>
+        <item name="EU">University of Kabianga</item>
+        <item name="EU">University of Nairobi</item>
+        <item name="EU">Zetech University</item>
+
+    </string-array>
+
+    <string-array name="tanzania_choose_community">
+        <item name="1st">Ardhi University</item>
+        <item name="1st">Catholic University of Health &amp; Allied Sciences</item>
+        <item name="1st">Eckernforde Tanga University</item>
+        <item name="1st">International Medical &amp; Technological University</item>
+        <item name="1st">Katavi University of Agriculture</item>
+        <item name="1st">Mbeya University of Science &amp; Technology</item>
+        <item name="1st">Mount Meru University</item>
+        <item name="1st">Muhimbili University of Health &amp; Allied Sciences</item>
+        <item name="1st">Muslim University of Morogoro</item>
+        <item name="1st">Mzumbe University</item>
+        <item name="1st">Nelson Mandela Africa Institution of Science &amp; Technology</item>
+        <item name="1st">Sebastian Kolowa Memorial University</item>
+        <item name="1st">Sokoine University of Agriculture</item>
+        <item name="1st">St. Augustine University of Tanzania</item>
+        <item name="1st">St. Johns University of Tanzania</item>
+        <item name="1st">St. Joseph University in Tanzania</item>
+        <item name="1st">Teofilo Kisanji University</item>
+        <item name="1st">Hubert Kairuki Memorial University</item>
+        <item name="1st">The State University of Zanzibar</item>
+        <item name="1st">The University of Arusha</item>
+        <item name="1st">The University of Dodoma</item>
+        <item name="1st">Tumaini University Makurima</item>
+        <item name="1st">United African University of Tanzania</item>
+        <item name="1st">University of Bagomoyo</item>
+        <item name="2nd">University of Dar es Salaam</item>
+        <item name="1st">Zanzibar University</item>
+    </string-array>
+
+
+    <string-array name="uganda_choose_community">
+        <item name="1st">African Rural University</item>
+        <item name="2st">All Saints University</item>
+        <item name="3st">Bishop Stuart University</item>
+        <item name="4st">Bugema University</item>
+        <item name="5st">Busitema University</item>
+        <item name="6st">Busoga University</item>
+        <item name="7st">Cavendish University Uganda</item>
+        <item name="1st">Gulu University</item>
+        <item name="9st">International Health Sciences University</item>
+        <item name="1ost">International University of East Africa</item>
+        <item name="11st">Islamic University in Uganda</item>
+        <item name="12st">Kabale University</item>
+        <item name="13st">Kampala International University</item>
+        <item name="14st">Kampala University</item>
+        <item name="15st">Kumi University</item>
+        <item name="16st">Kyambogo University</item>
+        <item name="17st">LivingStone International University</item>
+        <item name="18st">Makerere University</item>
+        <item name="19st">Mbarara University of Science &amp; Technology</item>
+        <item name="20st">Mountains of the Moon University</item>
+        <item name="21st">Muni University</item>
+        <item name="22st">Muteesa l Royal University</item>
+        <item name="21st">Ndejje University</item>
+        <item name="24st">Nkumba University</item>
+        <item name="25st">Soroti University</item>
+        <item name="21st">St. Augustine International University</item>
+        <item name="27st">St. Lawrence University</item>
+        <item name="28st">Uganda Christian University</item>
+        <item name="29st">Uganda Martyrs University</item>
+        <item name="30st">Uganda Pentecostal University</item>
+        <item name="31st">Uganda Technology &amp; Management University</item>
+        <item name="32st">Victoria University</item>
+
+    </string-array>
+
+
+    <string-array name="nigeria_choose_community">
+        <item name="1st">Abia State University</item>
+        <item name="2st">Abubakar Tafawa Balewa University</item>
+        <item name="3st">Achievers University Owo</item>
+        <item name="4st">Adamawa State University</item>
+        <item name="5st">Adekunle Ajasin University</item>
+        <item name="6st">Adeleke University</item>
+        <item name="7st">Afe Babalola University</item>
+        <item name="1st">African University of Science &amp; Technology</item>
+        <item name="9st">Ahmadu Bello University</item>
+        <item name="1ost">Ajayi Crowther University</item>
+        <item name="11st">Akwa Ibom State University</item>
+        <item name="12st">Al Hikmar University</item>
+        <item name="13st">Al Qalam University Katsina</item>
+        <item name="14st">Ambrose Alli University</item>
+        <item name="15st">American University of Nigeria</item>
+        <item name="16st">Badcock University</item>
+        <item name="17st">Bauchi State University</item>
+        <item name="18st">Bayero University Kano</item>
+        <item name="19st">Baze University</item>
+        <item name="20st">Bells University of Technology</item>
+        <item name="21st">Benson Idahosa University</item>
+        <item name="22st">Bingham University</item>
+        <item name="21st">Bowen University</item>
+        <item name="24st">Caleb University</item>
+        <item name="25st">Caritas University</item>
+        <item name="21st">Chukuemeka Odumegwu Ojukwu University</item>
+        <item name="27st">Convenant University</item>
+        <item name="28st">Crawford University</item>
+        <item name="29st">Cresent University Abeokuta</item>
+        <item name="30st">Cross River University of Technology</item>
+        <item name="31st">Delta State University Abraka</item>
+        <item name="32st">Ebonyi State University</item>
+        <item name="33st">Ekiti State University Ado Ekiti</item>
+        <item name="34st">Elizade University</item>
+        <item name="35st">Enugu State University of Science &amp; Technology</item>
+        <item name="36st">Federal University of Petroleum Resources</item>
+        <item name="36st">Federal University of Technology Akure</item>
+        <item name="36st">Federal University of Technology Minna</item>
+        <item name="37st">Federal University of Technology Owerri</item>
+        <item name="38st">Federal University Dutse</item>
+        <item name="39st">Federal University Dutsin Ma</item>
+        <item name="40st">Federal University Kashere</item>
+        <item name="41st">Federal University Lafia</item>
+        <item name="42st">Federal University Lokoja</item>
+        <item name="43st">Federal University Ndufu-Alike</item>
+        <item name="44st">Federal University Otuoke</item>
+        <item name="45st">Federal University Oye Ekiti</item>
+        <item name="46st">Federal University Wukari</item>
+        <item name="47st">Fountain University</item>
+        <item name="48st">Godfrey Okoye University</item>
+        <item name="49st">Gombe State University</item>
+        <item name="50st">Ibrahim Badamasi Babanginda University</item>
+        <item name="51st">Igbinedion University Okada</item>
+        <item name="52st">Imo State University</item>
+        <item name="53st">Joseph Ayo Babalola University</item>
+        <item name="54st">Kaduna State University</item>
+        <item name="55st">Kano University of Science &amp; Technology</item>
+        <item name="56st">Kebbi State University of Science &amp; Technology</item>
+        <item name="57st">Kogi State University</item>
+        <item name="58st">Kwara State University</item>
+        <item name="59st">Kwararafa University Wukari</item>
+        <item name="60st">Ladoke Akintola University of Technology</item>
+        <item name="61st">Lagos State University</item>
+        <item name="62st">Landmark University</item>
+        <item name="63st">Lead City University</item>
+        <item name="64st">Madonna University</item>
+        <item name="65st">Michael Okpara University of Agriculture</item>
+        <item name="66st">Madibbo Adama University of Technology</item>
+        <item name="67st">Nasarawa State University</item>
+        <item name="68st">Niger Delta University</item>
+        <item name="69st">Nile University of Nigeria</item>
+        <item name="70st">Nnamdi Azikiwe University</item>
+        <item name="71st">Novena University</item>
+        <item name="71st">Obafemi Awolowo University</item>
+        <item name="73st">Obong University</item>
+        <item name="74st">Oduduwa University</item>
+        <item name="75st">Olabisi Onabanjo University</item>
+        <item name="76st">Ondo State University of Science &amp; Technology</item>
+        <item name="77st">Osun State University</item>
+        <item name="78st">Pan African University</item>
+        <item name="79st">Paul University</item>
+        <item name="80st">Plateau Sate University</item>
+        <item name="82st">Redeemers University</item>
+        <item name="83st">Renaissance University</item>
+        <item name="84st">Rhema University</item>
+        <item name="85st">River State University of Science &amp; Technology</item>
+        <item name="86st">Salem University</item>
+        <item name="87st">Samuel Adegboyega University</item>
+        <item name="88st">Sokoto Sate University</item>
+        <item name="89st">Tai Solarin University of Education</item>
+        <item name="90st">Tansian University</item>
+        <item name="91st">Taraba State University</item>
+        <item name="92st">Umaru Musa Yar Adua University</item>
+        <item name="93st">University of Abuja</item>
+        <item name="94st">University of Agriculture Abeokuta</item>
+        <item name="95st">University of Agriculture Makurdi</item>
+        <item name="96st">University of Benin</item>
+        <item name="97st">University of Calabar</item>
+        <item name="98st">University of Ibadan</item>
+        <item name="99st">University of Ilorin</item>
+        <item name="100st">University of Jos</item>
+        <item name="101st">University of Maiduguri</item>
+        <item name="104st">University of Mkar</item>
+        <item name="103st">University of Nigeria</item>
+        <item name="105st">University of Port Harcourt</item>
+        <item name="106st">University of Uyo</item>
+        <item name="107st">Usmanu Danfodio University </item>
+        <item name="108st">Veritas University</item>
+        <item name="109st">Wellspring University</item>
+        <item name="110st">Wesley University of Science &amp; Technology</item>
+        <item name="111st">Western Delta University</item>
+        <item name="112st">Yobe State University</item>
+
+
+    </string-array>
+
+
+    <string-array name="ghana_choose_community">
+        <item name="1st">Accra Institute of Technology</item>
+        <item name="2st">Accra Polytechnic</item>
+        <item name="3st">Advance Business College</item>
+        <item name="4st">African University College of Communication</item>
+        <item name="5st">All Nations University College</item>
+        <item name="6st">Anglican University College of Technology</item>
+        <item name="7st">Ashesi University College</item>
+        <item name="1st">BlueCrest University College</item>
+        <item name="9st">Bolgatanga Polytechnic</item>
+        <item name="1ost">Cape Coast Polytechnic</item>
+        <item name="11st">Catholic Institute of Business &amp; Technology</item>
+        <item name="12st">Catholic University College of Ghana</item>
+        <item name="13st">Central University</item>
+        <item name="14st">Christ Apostolic University College</item>
+        <item name="15st">Christian Service University College</item>
+        <item name="16st">Data Link Institute</item>
+        <item name="17st">Dominion University College</item>
+        <item name="18st">Evangelical Presbyterian University College</item>
+        <item name="19st">Garden City University College</item>
+        <item name="20st">Ghana Baptist University College</item>
+        <item name="21st">Ghana Christian University College</item>
+        <item name="22st">Ghana Institute of Journalism</item>
+        <item name="21st">Ghana Institute of Languages</item>
+        <item name="24st">Ghana Institute of Management &amp; Public Administration</item>
+        <item name="25st">Ghana Technology University College</item>
+        <item name="21st">Ho Polytechnic</item>
+        <item name="27st">Islamic University College Ghana</item>
+        <item name="28st">Jayee University College</item>
+        <item name="29st">KAAF University College</item>
+        <item name="30st">Kings University College</item>
+        <item name="31st">Knutsford University College</item>
+        <item name="32st">Koforidua Polytechnic</item>
+        <item name="33st">Kumasi Polytechnic</item>
+        <item name="34st">Kwame Nkrumah University of Science &amp; Technology</item>
+        <item name="35st">Lancaster University Ghana</item>
+        <item name="36st">Maranatha University College</item>
+        <item name="36st">Marshalls University College</item>
+        <item name="36st">Methodist University College</item>
+        <item name="37st">Mountcrest University College</item>
+        <item name="38st">Pan African Christian University College</item>
+        <item name="39st">Pentecost University College</item>
+        <item name="40st">Presbyterian University College</item>
+        <item name="41st">Radford University College</item>
+        <item name="42st">Redent University College of Science &amp; Technology</item>
+        <item name="43st">Regional Maritime University</item>
+        <item name="44st">Spiritan University College</item>
+        <item name="45st">Sunyani Technical University</item>
+        <item name="46st">Takoradi Polytechnic</item>
+        <item name="47st">Tamale Polytechnic</item>
+        <item name="48st">University College of Agriculture &amp; Environmental Studies</item>
+        <item name="49st">University for Development Studies</item>
+        <item name="50st">University of Cape Coast</item>
+        <item name="51st">University of Education Winneba</item>
+        <item name="52st">University of Energy &amp; Natural Resources</item>
+        <item name="53st">University of Ghana</item>
+        <item name="54st">University of Health &amp; Allied Sciences</item>
+        <item name="55st">University of Mines &amp; Technology</item>
+        <item name="56st">University of Professional Studies</item>
+        <item name="57st">Valley view University</item>
+        <item name="58st">Wa Polytechnic</item>
+        <item name="59st">West End University College</item>
+        <item name="60st">Wisconsin International University College</item>
+        <item name="61st">Zenith University College</item>
+
+    </string-array>
+
+
+    <string-array name="south_africa_choose_community">
+        <item name="1st">Cape Peninsula University of Technology</item>
+        <item name="2st">Central University of Technology</item>
+        <item name="3st">Durban University of Technology</item>
+        <item name="4st">Mangosuthu University of Technology</item>
+        <item name="5st">Nelson Mandela Metropolitan University</item>
+        <item name="6st">Nort West University</item>
+        <item name="7st">Rhodes University Uganda</item>
+        <item name="1st">Tshwane University of Technology</item>
+        <item name="9st">Universiteit Stellenbosch</item>
+        <item name="9st">Universiteit van die Vrystaat</item>
+        <item name="1ost">University of Cape Town</item>
+        <item name="11st">University of Fort Hare</item>
+        <item name="12st">University of Johannesburg</item>
+        <item name="13st">University of KwaZulu Natal</item>
+        <item name="14st">University of Limpopo</item>
+        <item name="15st">University of Pretoria</item>
+        <item name="16st">University of South Africa</item>
+        <item name="17st">University of the Western Cape</item>
+        <item name="18st">University of the Witwatersrand</item>
+        <item name="19st">University of Venda</item>
+        <item name="20st">Universityof Zululand</item>
+        <item name="21st">Vaal University of Technology</item>
+        <item name="22st">Walter Sisulu University</item>
+
+    </string-array>
+
+    <string-array name="seychelles_choose_community">
+        <item name="1st">Seychelles Polytechnic</item>
+        <item name="2st">University of Setchelles</item>
+
+    </string-array>
+
+    <string-array name="mauritius_choose_community">
+        <item name="1st">University of Mauritius</item>
+        <item name="2st">University of Technology Mauritius</item>
+        <item name="2st">Mauritius Institute of Education</item>
+        <item name="2st">Mahatma Gandhi Institute</item>
+
+    </string-array>
+
+
+    <string-array name="choose_gender">
+        <item name="Male">Male</item>
+        <item name="Female">Female</item>
+    </string-array>
+    <string-array name="choose_gender_post">
+        <item name="all">All</item>
+        <item name="Male">Male</item>
+        <item name="Female">Female</item>
+    </string-array>
+
+    <string-array name="choose_year">
+        <item name="1st">1st year</item>
+        <item name="2nd">2nd year</item>
+        <item name="3rd">3rd year</item>
+        <item name="4th">4th year</item>
+        <item name="final">final</item>
+        <item name="Alumni">Alumni</item>
+    </string-array>
+    <string-array name="choose_year_post">
+        <item name="all">All</item>
+        <item name="1st">1st year</item>
+        <item name="2nd">2nd year</item>
+        <item name="3rd">3rd year</item>
+        <item name="4th">4th year</item>
+        <item name="final">final</item>
+        <item name="Alumni">Alumni</item>
+    </string-array>
+
+    <string-array name="choose_campus">
+        <item name="CBD">Allupe Campus</item>
+        <item name="CBD">Arusha Campus</item>
+        <item name="CBD">Akuru Campus</item>
+        <item name="MC">Main Campus</item>
+        <item name="CBD">CBD</item>
+        <item name="CBD">Bondo Campus</item>
+        <item name="CBD">Nyeri Campus</item>
+        <item name="CBD">Mombasa Campus</item>
+        <item name="CBD">Nairobi City Campus</item>
+        <item name="CBD">Nakuru Town Campus</item>
+        <item name="CBD">Njoro Campus</item>
+        <item name="DU">Karen Campus</item>
+        <item name="CBD">Kitale Campus</item>
+        <item name="CBD">Kisii Campus</item>
+        <item name="CBD">Karatina Town Campus</item>
+        <item name="CBD">Kericho Campus</item>
+        <item name="CBD">Kerugoya Town Campus</item>
+        <item name="CBD">Kigali Campus</item>
+        <item name="CBD">Kitui Campus</item>
+        <item name="CBD">Kisumu Campus</item>
+        <item name="CBD">Karbanet Campus</item>
+        <item name="CBD">Kipipiri Campus</item>
+        <item name="CBD">Kajiado Campus</item>
+        <item name="CBD">Kenyatta National Hospital Campus</item>
+        <item name="CBD">Kenya Science Campus</item>
+        <item name="CBD">Kikuyu Campus</item>
+
+        <item name="DEDAN">Westlands Campus </item>
+        <item name="JKUAT">Jomo Kenyatta University of Agriculture &amp;Technology</item>
+        <item name="EU">Egerton University</item>
+        <item name="Strathmore">Strathmore University</item>
+    </string-array>
+
+    <string-array name="choose_cour">
+        <item name="1">Architectural</item>
+        <item name="2">Automobile Engineering</item>
+        <item name="1">Aeronuticals &amp; Avionics Studies </item>
+        <item name="1">Agriculture &amp; Veterinary Medicine</item>
+        <item name="1">Applied &amp; Pure Sciences</item>
+        <item name="1">Chemical Engineering</item>
+        <item name="1">Civil Engineering </item>
+        <item name="1">Computer Engineering</item>
+        <item name="1">Computer Science &amp; Information Technology</item>
+        <item name="1">Computer Science &amp; Mathimatics</item>
+        <item name="1">Electrical &amp; Electronics Engineering</item>
+        <item name="1">Electronics &amp; Communication Engineering</item>
+        <item name="1">Electronics &amp; Telecommunication Engineering</item>
+        <item name="1">Fashion Design</item>
+        <item name="1">Food Technology</item>
+        <item name="1">Interior Design &amp; Decoration</item>
+        <item name="1">Library &amp; Information Information Sciences</item>
+        <item name="1">Mechanical Engineering</item>
+        <item name="1">Marine Engineering</item>
+        <item name="1">Medical Laboratory Technology</item>
+        <item name="1">Textile Technology</item>
+        <item name="Male">I.T</item>
+        <item name="Female">Business Administration</item>
+        <item name="Female">Law</item>
+        <item name="Female">Medicine &amp; Health Sciences</item>
+
+    </string-array>
+
+
+    <string-array name="choose_course">
+
+        <item name="1">Agriculture &amp; Veterinary Medicine</item>
+        <item name="1">Applied &amp; Pure Sciences</item>
+        <item name="1">Architecture &amp; Construction</item>
+        <item name="1">Business &amp; Management</item>
+        <item name="1">Computer Science &amp; IT</item>
+        <item name="1">Creative Arts &amp; Design</item>
+        <item name="1">Education &amp; Training</item>
+        <item name="1">Engineering</item>
+        <item name="1">Personal Care &amp; Fitness</item>
+        <item name="1">Health &amp; Medicine</item>
+        <item name="1">Humanities</item>
+        <item name="1">Law</item>
+        <item name="1">Social Studies &amp; Media</item>
+        <item name="1">Travel &amp; Hospitality</item>
+        <item name="1">Other</item>
+
+    </string-array>
+
+
+    <string-array name="choose_country">
+        <item name="KE">Kenya</item>
+        <item name="GH">Ghana</item>
+        <item name="GH">Mauritius</item>
+        <item name="NG">Nigeria</item>
+        <item name="SA">Seychelles</item>
+        <item name="SA">South Africa</item>
+        <item name="TZ">Tanzania</item>
+        <item name="UG">Uganda</item>
+
+    </string-array>
+
+</resources>

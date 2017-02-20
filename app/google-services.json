@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "368809362898",
+    "firebase_url": "https://campusmail-38083.firebaseio.com",
+    "project_id": "campusmail-38083",
+    "storage_bucket": "campusmail-38083.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368809362898:android:194d1cb7b1d34d59",
+        "android_client_info": {
+          "package_name": "com.campusmail.campusmail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368809362898-loe9vr3esimqc22m809g76b05pkseh83.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuk7x6U_BRHdAeQyajvL9yTqMf41BtOtM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

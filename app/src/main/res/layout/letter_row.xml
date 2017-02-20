@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+       <RelativeLayout
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
+           android:gravity="right"
+           android:layout_gravity="right"
+           android:layout_margin="5dp"
+           android:orientation="vertical">
+
+
+           <ImageView
+               android:layout_width="47dp"
+               android:layout_height="50dp"
+               android:id="@+id/inside_view"
+               android:layout_marginRight="5dp"
+               android:layout_marginTop="7dp"
+               android:src="@drawable/frame"
+               android:adjustViewBounds="true"
+               android:background="#00ffffff"
+               android:scaleType="fitXY" />
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/post_image"
+               android:layout_margin="4dp"
+               android:layout_alignBottom="@id/inside_view"
+               android:layout_alignLeft="@id/inside_view"
+               android:layout_alignTop="@id/inside_view"
+               android:layout_alignRight="@id/inside_view"
+               android:scaleType="fitCenter"
+               android:src="@drawable/ic_person_"
+               android:adjustViewBounds="true"
+               android:background="#00ffffff" />
+
+
+       </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="Dear,"
+                android:textSize="14dp"
+                android:layout_marginLeft="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/post_title"
+                    android:text="Dear"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="10dp" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="7dp"
+                    android:id="@+id/post_story"
+                    android:text="Story "/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
+                    android:text="By "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/post_name"
+                    android:text="Name"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_reply"
+                    android:layout_marginTop="1dp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/shareBtn"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="25dp"/>
+
+           <ImageView
+               android:layout_width="19dp"
+               android:layout_height="19dp"
+               android:src="@drawable/ic_call"
+               android:paddingTop="2dp"
+               android:id="@+id/buttonCall"
+               android:scaleType="fitCenter"
+               android:layout_marginRight="25dp"/>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:id="@+id/chatBtn"
+                    android:src="@drawable/chat"
+                    android:scaleType="fitXY"/>
+
+                <com.github.curioustechizen.ago.RelativeTimeTextView
+                    android:id="@+id/timestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="6dp"
+                    android:gravity="right"
+                    android:layout_marginRight="7dp"
+                    android:textSize="11dp"
+                    android:text="timestamp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
