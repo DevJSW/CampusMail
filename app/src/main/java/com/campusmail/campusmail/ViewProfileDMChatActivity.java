@@ -3,6 +3,7 @@ package com.campusmail.campusmail;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -112,6 +113,13 @@ public class ViewProfileDMChatActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.user_posts_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
@@ -123,10 +131,17 @@ public class ViewProfileDMChatActivity extends AppCompatActivity {
                 return true;
             default:
 
+                if (id == R.id.action_sentmails) {
+
+                    Intent cardonClick = new Intent(ViewProfileDMChatActivity.this, ProfileActivity.class);
+                    //cardonClick.putExtra("community_id", community_id );
+                    startActivity(cardonClick);
+                }
+
+                return super.onOptionsItemSelected(item);
 
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
 }

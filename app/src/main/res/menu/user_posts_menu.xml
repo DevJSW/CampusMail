@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/ic_add_a_photo_white"
-        android:title="Add Photo"
+        android:id="@+id/action_sentmails"
+        android:title="Mails"
+        android:icon="@drawable/ic_person_white_"
         app:showAsAction="always" />
 </menu>

@@ -121,30 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-                if (!dataSnapshot.hasChild(user_id)) {
-
-                    mProgressBar.setVisibility(View.GONE);
-
-                    Intent intent = new Intent(ProfileActivity.this, EditActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
-
-                }else {
-
-                    if ( getIntent().getExtras().getString("community_id") == null) {
-
-                        Intent intent = new Intent(ProfileActivity.this, Profile_Activity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish();
-                    }
-
-
-                    mProgressBar.setVisibility(View.GONE);
-                }
-
+                mProgressBar.setVisibility(View.GONE);
 
             }
 
