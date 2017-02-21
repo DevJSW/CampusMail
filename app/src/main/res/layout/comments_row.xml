@@ -4,35 +4,43 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_margin="5dp">
-
-    <RelativeLayout
+    
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginTop="6dp">
+        android:orientation="vertical">
 
-        <ImageButton
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/ic_account_box_black_"
-            android:background="#00ffffff"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:layout_gravity="top"
-            android:id="@+id/post_phot" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="6dp">
+
+            <ImageButton
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_account_box_black_"
+                android:background="#00ffffff"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:layout_gravity="top"
+                android:id="@+id/post_phot" />
 
 
-        <ImageButton
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/ic_person_black_"
-            android:background="#00ffffff"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:layout_gravity="top"
-            android:id="@+id/post_image" />
-    </RelativeLayout>
+            <ImageButton
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_person_black_"
+                android:background="#00ffffff"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:layout_gravity="top"
+                android:id="@+id/post_image" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,14 +73,7 @@
                 android:layout_marginLeft="25dp"
                 android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/deleteBtn"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_gravity="right"/>
+
 
             </RelativeLayout>
 

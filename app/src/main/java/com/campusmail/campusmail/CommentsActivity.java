@@ -1,8 +1,10 @@
 package com.campusmail.campusmail;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,6 +59,7 @@ public class CommentsActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseCurrentPost;
     private Uri mImageUri = null;
     private static int GALLERY_REQUEST =1;
+    Context context = this;
 
     int TAKE_PHOTO_CODE = 0;
     public static int count = 0;
@@ -280,28 +283,128 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 });
 
-                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
 
+
+                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onClick(View v) {
 
-                        final String user_uid = (String) dataSnapshot.child("uid").getValue();
+                        // custom dialog
 
-                        if (user_uid == mAuth.getCurrentUser().getUid()) {
+                        final Dialog dialog = new Dialog(context);
+                        dialog.setContentView(R.layout.custom);
+                        dialog.setTitle("Settings");
 
-                            viewHolder.mDeleteBtn.setVisibility(View.VISIBLE);
+                        // set the custom dialog components - text, image and button
+                        TextView share = (TextView) dialog.findViewById(R.id.share);
+                        share.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
 
-                        } else {
+                                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
 
-                            viewHolder.mDeleteBtn.setVisibility(View.GONE);
-                        }
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
 
+                                        final String post_story = (String) dataSnapshot.child("story").getValue();
+                                        final String post_title = (String) dataSnapshot.child("title").getValue();
+
+
+                                                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                                                myIntent.setType("text/plain");
+                                                String shareBody = post_story + " ... read further info & comments on CampusMail";
+                                                String shareSub = "Dear "+ post_title ;
+                                                myIntent.putExtra(Intent.EXTRA_SUBJECT,shareBody);
+                                                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                                                startActivity(Intent.createChooser(myIntent,"Share mail through..."));
+
+
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+
+                                dialog.dismiss();
+                            }
+                        });
+
+                        TextView delete = (TextView) dialog.findViewById(R.id.delete);
+                        delete.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
+
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                        final String user_uid = (String) dataSnapshot.child("uid").getValue();
+
+                                        if (user_uid == mAuth.getCurrentUser().getUid()) {
+
+                                            AlertDialog diaBox = AskOption();
+                                            diaBox.show();
+
+                                        } else {
+
+
+                                        }
+
+                                    }
+
+                                    private AlertDialog AskOption() {
+
+                                        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(CommentsActivity.this)
+                                                //set message, title, and icon
+                                                .setTitle("Delete")
+                                                .setMessage("Do you want to Delete this post?")
+                                                .setIcon(R.drawable.ic_delete_forever_2)
+
+                                                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+                                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                                        //your deleting code
+
+                                                        mDatabase.child(post_key).removeValue();
+
+                                                        dialog.dismiss();
+                                                    }
+
+                                                })
+
+
+
+                                                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+
+                                                        dialog.dismiss();
+
+                                                    }
+                                                })
+                                                .create();
+                                        return myQuittingDialogBox;
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                                dialog.dismiss();
+                            }
+                        });
+
+
+                        dialog.show();
                     }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
                 });
 
 
@@ -338,7 +441,7 @@ public class CommentsActivity extends AppCompatActivity {
         View mView;
 
         DatabaseReference mDatabase;
-        ImageView mCardPhoto, mInside, mImage, mDeleteBtn;
+        ImageView mCardPhoto, mInside, mImage;
         ProgressBar mProgressBar;
 
         public CommentViewHolder(View itemView) {
@@ -348,7 +451,6 @@ public class CommentsActivity extends AppCompatActivity {
             mCardPhoto = (ImageView) mView.findViewById(R.id.post_photo);
             mInside = (ImageView) mView.findViewById(R.id.inside_view2);
             mImage = (ImageView) mView.findViewById(R.id.post_image);
-            mDeleteBtn = (ImageView) mView.findViewById(R.id.deleteBtn);
 
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
 

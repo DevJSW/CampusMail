@@ -277,6 +277,8 @@ public class MainActivity extends AppCompatActivity
                 viewHolder.setTime(model.getTime());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
 
+                viewHolder.setLikeBtn(post_key);
+
 
                 mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
 
@@ -343,6 +345,23 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
+               mDatabaseLike.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.equals(post_key)) {
+                            viewHolder.mLikeCount.setText(dataSnapshot.getChildrenCount() + "");
+
+                        } else {
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
                 mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(post_key);
                 mQueryComments.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -355,6 +374,21 @@ public class MainActivity extends AppCompatActivity
 
                     }
                 });
+
+
+                mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
+                mQueryLikes.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        viewHolder.mLikeCount.setText(dataSnapshot.getChildrenCount() + "");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
 
 
                 viewHolder.mImage.setOnClickListener(new View.OnClickListener() {
@@ -392,12 +426,13 @@ public class MainActivity extends AppCompatActivity
                                         if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
 
                                             mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).removeValue();
-                                            viewHolder.mCall.setImageResource(R.drawable.like_btn_black);
+                                            mDatabaseLike.child(post_key).child("post_key").removeValue();
                                             mProcessLike = false;
                                         }else {
 
                                             mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).setValue(post_name);
-                                            viewHolder.mCall.setImageResource(R.drawable.like_btn_red);
+                                            mDatabaseLike.child(post_key).child("post_key").setValue(post_key);
+
                                             mProcessLike = false;
 
                                         }
@@ -442,7 +477,9 @@ public class MainActivity extends AppCompatActivity
         View mView;
 
         ImageView mChatBtn, mCall,mCardPhoto, mInside, mImage, mShareBtn;
-        TextView mCommentCount;
+        DatabaseReference mDatabaseLike;
+        FirebaseAuth mAuth;
+        TextView mCommentCount, mLikeCount;
         DatabaseReference mDatabase;
         ProgressBar mProgressBar;
 
@@ -451,6 +488,9 @@ public class MainActivity extends AppCompatActivity
 
             mView = itemView;
 
+            mAuth = FirebaseAuth.getInstance();
+            mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Likes");
+            mDatabaseLike.keepSynced(true);
             mChatBtn = (ImageView)mView.findViewById(R.id.chatBtn);
             mCall = (ImageView)mView.findViewById(R.id.buttonCall);
             mInside = (ImageView) mView.findViewById(R.id.inside_view2);
@@ -459,10 +499,33 @@ public class MainActivity extends AppCompatActivity
             mImage = (ImageView) mView.findViewById(R.id.post_image);
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
             mCommentCount = (TextView) mView.findViewById(R.id.commentCount);
+            mLikeCount = (TextView) mView.findViewById(R.id.likeCount);
 
 
         }
 
+        public void setLikeBtn(final String post_key) {
+
+            mDatabaseLike.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
+
+                        mCall.setImageResource(R.drawable.like_btn_red);
+                    } else {
+                        mCall.setImageResource(R.drawable.like_btn_black);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }
 
         public void setTitle(String title) {
 

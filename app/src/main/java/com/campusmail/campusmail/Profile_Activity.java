@@ -57,7 +57,6 @@ public class Profile_Activity extends AppCompatActivity {
         });
 
         mPostCommunity = (TextView) findViewById(R.id.post_community);
-        mHomeBtn = (TextView) findViewById(R.id.open_home);
         mPostLocation = (TextView) findViewById(R.id.post_location);
         mPostName = (TextView) findViewById(R.id.post_name);
         mPostSkill = (TextView) findViewById(R.id.post_skills);
