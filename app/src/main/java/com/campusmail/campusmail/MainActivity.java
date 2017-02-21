@@ -2,14 +2,12 @@ package com.campusmail.campusmail;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -47,6 +45,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private String community_id = null;
+    private String post_name = null;
     private TextView mNoPostTxt;
     SwipeRefreshLayout mSwipeRefreshLayout;
     private ImageView mCallBtn, mImg;
@@ -60,11 +59,13 @@ public class MainActivity extends AppCompatActivity
     private StorageReference mStorage;
     private Uri mImageUri = null;
     private static int GALLERY_REQUEST =1;
-
+    private Boolean mProcessLike = false;
+    private DatabaseReference mDatabaseLike;
     private RelativeLayout mLiny;
 
     private Query mQueryLetters;
     private Query mQueryComments;
+    private Query mQueryLikes;
 
 
     @Override
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Letters");
         mDatabaseComment = FirebaseDatabase.getInstance().getReference().child("Comments");
+        mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Likes");
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar2);
         mLettersList = (RecyclerView) findViewById(R.id.letters_list);
         mLettersList.setLayoutManager(new LinearLayoutManager(this));
@@ -120,10 +122,10 @@ public class MainActivity extends AppCompatActivity
 
         mDatabase.keepSynced(true);
         mDatabaseUsers.keepSynced(true);
+        mDatabaseLike.keepSynced(true);
         mDatabase.keepSynced(true);
         community_id =  getIntent().getExtras().getString("community_id");
         mQueryLetters = mDatabase.orderByChild("community").equalTo(community_id);
-       // mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(po);
 
 
 
@@ -131,7 +133,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String post_image = (String) dataSnapshot.child("image").getValue();
-                String post_name = (String) dataSnapshot.child("name").getValue();
+                post_name = (String) dataSnapshot.child("name").getValue();
 
                 NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
                 View hView =  navigationView.getHeaderView(0);
@@ -373,45 +375,42 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-                mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
+
+
+                viewHolder.mCall.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onClick(View v) {
 
-                        final String phone = (String) dataSnapshot.child("phone").getValue();
-                        final String name = (String) dataSnapshot.child("name").getValue();
+                        mProcessLike = true;
 
-                        if (phone == null) {
-
-                            Toast.makeText(getApplicationContext(), "Sorry! Campusmail does'nt have " +name+ "'s contact", Toast.LENGTH_SHORT).show();
-
-                        } else {
-
-                            viewHolder.mCall.setOnClickListener(new View.OnClickListener() {
+                            mDatabaseLike.addValueEventListener(new ValueEventListener() {
                                 @Override
-                                public void onClick(View v) {
-                                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                                    callIntent.setData(Uri.parse("tel:" + phone));
-                                    if (ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CALL_PHONE) !=
-                                            PackageManager.PERMISSION_GRANTED) {
-                                        // TODO: Consider calling
-                                        //    ActivityCompat#requestPermissions
-                                        // here to request the missing permissions, and then overriding
-                                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                        //                                          int[] grantResults)
-                                        // to handle the case where the user grants the permission. See the documentation
-                                        // for ActivityCompat#requestPermissions for more details.
-                                        return;
-                                    }
-                                    startActivity(callIntent);
+                                public void onDataChange(DataSnapshot dataSnapshot) {
 
+                                    if(mProcessLike) {
+
+                                        if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
+
+                                            mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).removeValue();
+                                            viewHolder.mCall.setImageResource(R.drawable.like_btn_black);
+                                            mProcessLike = false;
+                                        }else {
+
+                                            mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).setValue(post_name);
+                                            viewHolder.mCall.setImageResource(R.drawable.like_btn_red);
+                                            mProcessLike = false;
+
+                                        }
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
                                 }
                             });
-                        }
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
