@@ -20,7 +20,7 @@ public class ViewComradeProfileActivity extends AppCompatActivity {
 
     private TextView mPostName, mPostLocation, mPostCommunity, mPostGender, mPostSkill, mPostBio, mPostWeb, mPostPhone, mPostYear, mPostCampus;
     private ImageView mPostImage, mSendDM;
-
+    private String user_uid = null;
     private String mPostKey = null;
     private DatabaseReference mDatabaseComments, mDatabaseUsers;
 
@@ -77,6 +77,7 @@ public class ViewComradeProfileActivity extends AppCompatActivity {
                         String post_campus = (String) dataSnapshot.child("campus").getValue();
                         String post_gender = (String) dataSnapshot.child("gender").getValue();
                         String post_year = (String) dataSnapshot.child("year").getValue();
+                        user_uid = (String) dataSnapshot.child("uid").getValue();
 
                         mPostName.setText(post_name);
                         mPostCommunity.setText(post_community);
@@ -129,8 +130,8 @@ public class ViewComradeProfileActivity extends AppCompatActivity {
             default:
                 if (id == R.id.action_sentmails) {
 
-                    Intent cardonClick = new Intent(ViewComradeProfileActivity.this, ProfileActivity.class);
-                    //cardonClick.putExtra("community_id", community_id );
+                    Intent cardonClick = new Intent(ViewComradeProfileActivity.this, ProfileUserLettersActivity.class);
+                    cardonClick.putExtra("heartraise_id", user_uid );
                     startActivity(cardonClick);
                 }
 

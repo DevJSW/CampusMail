@@ -23,6 +23,7 @@ public class ViewLetterProfileActivity extends AppCompatActivity {
 
     private String mPostKey = null;
     private String mUidKey = null;
+    private String user_uid = null;
     private DatabaseReference mDatabaseComments, mDatabaseUsers;
 
     @Override
@@ -83,6 +84,7 @@ public class ViewLetterProfileActivity extends AppCompatActivity {
                         String post_campus = (String) dataSnapshot.child("campus").getValue();
                         String post_gender = (String) dataSnapshot.child("gender").getValue();
                         String post_year = (String) dataSnapshot.child("year").getValue();
+                        user_uid = (String) dataSnapshot.child("uid").getValue();
 
                         mPostName.setText(post_name);
                         mPostCommunity.setText(post_community);
@@ -135,8 +137,8 @@ public class ViewLetterProfileActivity extends AppCompatActivity {
 
                 if (id == R.id.action_sentmails) {
 
-                    Intent cardonClick = new Intent(ViewLetterProfileActivity.this, ProfileActivity.class);
-                    //cardonClick.putExtra("community_id", community_id );
+                    Intent cardonClick = new Intent(ViewLetterProfileActivity.this, ProfileUserLettersActivity.class);
+                    cardonClick.putExtra("heartraise_id", user_uid );
                     startActivity(cardonClick);
                 }
 

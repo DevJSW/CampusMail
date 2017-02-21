@@ -28,6 +28,7 @@ public class ViewProfileActivity extends AppCompatActivity {
     private ImageView mPostImage, mSendDM, mPost;
 
     private String mPostKey = null;
+    private String user_uid = null;
     private DatabaseReference mDatabaseComments, mDatabaseUsers;
     private Uri mImageUri = null;
     private DatabaseReference mDatabase;
@@ -103,6 +104,7 @@ public class ViewProfileActivity extends AppCompatActivity {
                         String post_campus = (String) dataSnapshot.child("campus").getValue();
                         String post_gender = (String) dataSnapshot.child("gender").getValue();
                         String post_year = (String) dataSnapshot.child("year").getValue();
+                        user_uid = (String) dataSnapshot.child("uid").getValue();
 
                         mPostName.setText(post_name);
                         mPostCommunity.setText(post_community);
@@ -155,8 +157,8 @@ public class ViewProfileActivity extends AppCompatActivity {
 
                 if (id == R.id.action_sentmails) {
 
-                    Intent cardonClick = new Intent(ViewProfileActivity.this, ProfileActivity.class);
-                    //cardonClick.putExtra("community_id", community_id );
+                    Intent cardonClick = new Intent(ViewProfileActivity.this, ProfileUserLettersActivity.class);
+                    cardonClick.putExtra("heartraise_id", user_uid );
                     startActivity(cardonClick);
                 }
 

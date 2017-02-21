@@ -43,8 +43,7 @@
             android:label="Comments" />
         <activity
             android:name=".ProfileActivity"
-            android:label="Posts"
-            android:theme="@style/AppTheme.ActionBar.Transparent" />
+            android:label="Posts" />
         <activity
             android:name=".OpenLetterActivity"
             android:label=""
@@ -141,7 +140,10 @@
             android:label="Sent mail&apos;s" />
         <activity
             android:name=".ViewDirectmailActivity"
-            android:label="Profile"/>
+            android:label="Profile" />
+        <activity
+            android:name=".ProfileUserLettersActivity"
+            android:label="Posts" />
     </application>
 
 </manifest>

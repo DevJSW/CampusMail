@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +34,6 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -70,12 +68,6 @@ public class CommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // Here, we are making a folder named picFolder to store
-        // pics taken by the camera using this application.
-        final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/";
-        File newdir = new File(dir);
-        newdir.mkdirs();
 
 
         mNoPostTxt = (TextView) findViewById(R.id.noPostTxt);
@@ -131,6 +123,24 @@ public class CommentsActivity extends AppCompatActivity {
 
             }
         });
+
+        mQueryPostComment.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null){
+
+
+                } else {
+                    mNoPostTxt.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         mDatabaseComment.keepSynced(true);
         mDatabase.keepSynced(true);
@@ -270,6 +280,30 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 });
 
+                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        final String user_uid = (String) dataSnapshot.child("uid").getValue();
+
+                        if (user_uid == mAuth.getCurrentUser().getUid()) {
+
+                            viewHolder.mDeleteBtn.setVisibility(View.VISIBLE);
+
+                        } else {
+
+                            viewHolder.mDeleteBtn.setVisibility(View.GONE);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
 
                 viewHolder.mCardPhoto.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -304,7 +338,7 @@ public class CommentsActivity extends AppCompatActivity {
         View mView;
 
         DatabaseReference mDatabase;
-        ImageView mCardPhoto, mInside, mImage;
+        ImageView mCardPhoto, mInside, mImage, mDeleteBtn;
         ProgressBar mProgressBar;
 
         public CommentViewHolder(View itemView) {
@@ -314,6 +348,7 @@ public class CommentsActivity extends AppCompatActivity {
             mCardPhoto = (ImageView) mView.findViewById(R.id.post_photo);
             mInside = (ImageView) mView.findViewById(R.id.inside_view2);
             mImage = (ImageView) mView.findViewById(R.id.post_image);
+            mDeleteBtn = (ImageView) mView.findViewById(R.id.deleteBtn);
 
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
 

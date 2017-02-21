@@ -31,6 +31,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity
     SwipeRefreshLayout mSwipeRefreshLayout;
     private ImageView mCallBtn, mImg;
     private DatabaseReference mDatabaseUsers;
-    private DatabaseReference mCurrentDatabaseUser;
+    private DatabaseReference mDatabaseComment;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private ProgressBar mProgressBar;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity
     private RelativeLayout mLiny;
 
     private Query mQueryLetters;
+    private Query mQueryComments;
 
 
     @Override
@@ -111,6 +113,7 @@ public class MainActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Letters");
+        mDatabaseComment = FirebaseDatabase.getInstance().getReference().child("Comments");
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar2);
         mLettersList = (RecyclerView) findViewById(R.id.letters_list);
         mLettersList.setLayoutManager(new LinearLayoutManager(this));
@@ -121,6 +124,7 @@ public class MainActivity extends AppCompatActivity
         mDatabase.keepSynced(true);
         community_id =  getIntent().getExtras().getString("community_id");
         mQueryLetters = mDatabase.orderByChild("community").equalTo(community_id);
+       // mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(po);
 
 
 
@@ -338,7 +342,33 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
+                mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(post_key);
+                mQueryComments.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        viewHolder.mCommentCount.setText(dataSnapshot.getChildrenCount() + "");
+                    }
 
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
 
 
                 viewHolder.mImage.setOnClickListener(new View.OnClickListener() {
@@ -429,6 +459,7 @@ public class MainActivity extends AppCompatActivity
         View mView;
 
         ImageView mChatBtn, mCall,mCardPhoto, mInside, mImage, mShareBtn;
+        TextView mCommentCount;
         DatabaseReference mDatabase;
         ProgressBar mProgressBar;
 
@@ -444,6 +475,7 @@ public class MainActivity extends AppCompatActivity
             mShareBtn = (ImageView) mView.findViewById(R.id.shareBtn);
             mImage = (ImageView) mView.findViewById(R.id.post_image);
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
+            mCommentCount = (TextView) mView.findViewById(R.id.commentCount);
 
 
         }

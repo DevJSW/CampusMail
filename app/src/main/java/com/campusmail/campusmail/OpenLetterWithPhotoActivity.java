@@ -35,7 +35,6 @@ public class OpenLetterWithPhotoActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         mPostPhoto = (ImageView) findViewById(R.id.post_photo);
-        mPostDate = (TextView) findViewById(R.id.post_date);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Comments");
         mDatabase.keepSynced(true);
@@ -46,13 +45,10 @@ public class OpenLetterWithPhotoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String post_date = (String) dataSnapshot.child("time").getValue();
                 String post_uid = (String) dataSnapshot.child("uid").getValue();
                 String post_photo = (String) dataSnapshot.child("photo").getValue();
 
 
-
-                mPostDate.setText(post_date);
                 Picasso.with(OpenLetterWithPhotoActivity.this).load(post_photo).into(mPostPhoto);
 
             }
