@@ -216,11 +216,20 @@
                     android:id="@+id/shareBtn"
                     android:layout_marginRight="35dp"/>
 
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/likeCount"
+                    android:layout_marginTop="3dp"
+
+                    android:paddingLeft="7dp"
+                    android:text="0"/>
+
            <ImageView
-               android:layout_width="19dp"
-               android:layout_height="19dp"
-               android:src="@drawable/ic_call"
-               android:paddingTop="2dp"
+               android:layout_width="23dp"
+               android:layout_height="22dp"
+               android:src="@drawable/like_btn_black"
+               android:paddingTop="1dp"
                android:id="@+id/buttonCall"
                android:scaleType="fitCenter"
                android:layout_marginRight="35dp"/>
@@ -230,6 +239,8 @@
                     android:layout_height="20dp"
                     android:id="@+id/commentCount"
                     android:layout_marginTop="3dp"
+
+                    android:paddingLeft="7dp"
                     android:text="0"/>
 
                 <ImageView
