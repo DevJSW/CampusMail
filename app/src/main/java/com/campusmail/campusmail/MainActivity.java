@@ -21,7 +21,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private String community_id = null;
+    private String user_community = null;
     private String post_name = null;
     private TextView mNoPostTxt;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity
     private static int GALLERY_REQUEST =1;
     private Boolean mProcessLike = false;
     private DatabaseReference mDatabaseLike;
-    private RelativeLayout mLiny;
 
     private Query mQueryLetters;
     private Query mQueryComments;
@@ -134,6 +133,7 @@ public class MainActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String post_image = (String) dataSnapshot.child("image").getValue();
                 post_name = (String) dataSnapshot.child("name").getValue();
+                user_community = (String) dataSnapshot.child("community").getValue();
 
                 NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
                 View hView =  navigationView.getHeaderView(0);

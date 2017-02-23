@@ -1,10 +1,8 @@
 package com.campusmail.campusmail;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,6 +40,7 @@ import java.util.Date;
 public class CommentsActivity extends AppCompatActivity {
 
     private String mPostKey = null;
+    private String user_uid = null;
     private TextView mNoPostTxt;
     SwipeRefreshLayout mSwipeRefreshLayout;
     private ProgressDialog mProgress;
@@ -281,130 +280,6 @@ public class CommentsActivity extends AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
-                });
-
-
-
-                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        // custom dialog
-
-                        final Dialog dialog = new Dialog(context);
-                        dialog.setContentView(R.layout.custom);
-                        dialog.setTitle("Settings");
-
-                        // set the custom dialog components - text, image and button
-                        TextView share = (TextView) dialog.findViewById(R.id.share);
-                        share.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
-
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                        final String post_story = (String) dataSnapshot.child("story").getValue();
-                                        final String post_title = (String) dataSnapshot.child("title").getValue();
-
-
-                                                Intent myIntent = new Intent(Intent.ACTION_SEND);
-                                                myIntent.setType("text/plain");
-                                                String shareBody = post_story + " ... read further info & comments on CampusMail";
-                                                String shareSub = "Dear "+ post_title ;
-                                                myIntent.putExtra(Intent.EXTRA_SUBJECT,shareBody);
-                                                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
-                                                startActivity(Intent.createChooser(myIntent,"Share mail through..."));
-
-
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });
-
-
-                                dialog.dismiss();
-                            }
-                        });
-
-                        TextView delete = (TextView) dialog.findViewById(R.id.delete);
-                        delete.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
-
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                        final String user_uid = (String) dataSnapshot.child("uid").getValue();
-
-                                        if (user_uid == mAuth.getCurrentUser().getUid()) {
-
-                                            AlertDialog diaBox = AskOption();
-                                            diaBox.show();
-
-                                        } else {
-
-
-                                        }
-
-                                    }
-
-                                    private AlertDialog AskOption() {
-
-                                        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(CommentsActivity.this)
-                                                //set message, title, and icon
-                                                .setTitle("Delete")
-                                                .setMessage("Do you want to Delete this post?")
-                                                .setIcon(R.drawable.ic_delete_forever_2)
-
-                                                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-
-                                                    public void onClick(DialogInterface dialog, int whichButton) {
-                                                        //your deleting code
-
-                                                        mDatabase.child(post_key).removeValue();
-
-                                                        dialog.dismiss();
-                                                    }
-
-                                                })
-
-
-
-                                                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int which) {
-
-                                                        dialog.dismiss();
-
-                                                    }
-                                                })
-                                                .create();
-                                        return myQuittingDialogBox;
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-
-                                    }
-                                });
-
-                                dialog.dismiss();
-                            }
-                        });
-
-
-                        dialog.show();
-                    }
-
                 });
 
 

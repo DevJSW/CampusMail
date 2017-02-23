@@ -165,6 +165,206 @@
 
     </string-array>
 
+    <string-array name="cameroon_choose_community">
+        <item name="1st">Universite de Yaounde l</item>
+        <item name="2st">Universite de Dschang</item>
+        <item name="3st">Universite de Buea</item>
+        <item name="4st">Universite de Douala</item>
+        <item name="5st">Universite des Montagnes</item>
+        <item name="6st">Universite de Ngaoundere</item>
+        <item name="7st">Universite Catholique de l Afrique Centrale</item>
+        <item name="1st">Universite de Yaounde ll</item>
+        <item name="9st">Universite de Bamenda</item>
+        <item name="1ost">Universite de Maroua</item>
+        <item name="11st">Universite Protestante d Afrique Centrale</item>
+        <item name="12st">Catholic University of Cameroon</item>
+        <item name="13st">Bamenda University of Science &amp; Technology</item>
+        <item name="14st">Universite Adventiste Cosendai</item>
+        <item name="15st">Universite de Yaounde Sud Joseph NDI SAMBA</item>
+
+    </string-array>
+
+    <string-array name="malawi_choose_community">
+        <item name="1st">Blantyre International University</item>
+        <item name="2st">Daeyang University</item>
+        <item name="3st">Lilongwe University of Agriculture &amp; Natural Resources</item>
+        <item name="4st">Malawi Adventist University</item>
+        <item name="5st">Malawi Assemblies of God University</item>
+        <item name="6st">Malawi University of Science &amp; Technology</item>
+        <item name="7st">Mzuzu University</item>
+        <item name="1st">Nkhoma University</item>
+        <item name="9st">Pentecostal Life University</item>
+        <item name="1ost">Riverton University</item>
+        <item name="11st">Skyway University</item>
+        <item name="12st">St. John the Baptist University</item>
+        <item name="13st">The Catholic University of Malawi</item>
+        <item name="14st">University of Livingstonia</item>
+        <item name="15st">University of Malawi</item>
+
+    </string-array>
+
+    <string-array name="gambia_choose_community">
+        <item name="1st">American International University West Africa</item>
+        <item name="2st">University of The Gambia</item>
+        <item name="3st">Universite de Buea</item>
+
+
+    </string-array>
+
+    <string-array name="uk_choose_community">
+        <item name="1st">Aberystwyth University</item>
+        <item name="2st">Anglia Ruskin University</item>
+        <item name="3st">Arts University Bournemouth</item>
+        <item name="4st">Aston University</item>
+        <item name="5st">Bangor University</item>
+        <item name="6st">Bath Spa University</item>
+        <item name="7st">Birkbeck University of London</item>
+        <item name="1st">Birmingham City University</item>
+        <item name="9st">Bishop Grosseteste University</item>
+        <item name="1ost">Bournemouth University</item>
+        <item name="11st">BPP University</item>
+        <item name="12st">Brunel University</item>
+        <item name="13st">Buckinghamshire University</item>
+        <item name="14st">Canterbury Christ Church University</item>
+        <item name="15st">Cardiff Metropolitan University</item>
+        <item name="16st">City University London</item>
+        <item name="17st">Coventry University</item>
+        <item name="18st">Cranfield University Kano</item>
+        <item name="19st">De Montfort University</item>
+        <item name="20st">Durham University</item>
+        <item name="21st">Edge Hill University</item>
+        <item name="22st">Edinburgh Napier University</item>
+        <item name="21st">European School of Economics</item>
+        <item name="24st">Falmouth University</item>
+        <item name="25st">Glasgow School of Art</item>
+        <item name="21st">Glyndwr University</item>
+        <item name="27st">Goldsmiths University of London</item>
+        <item name="28st">Harper Adams University</item>
+        <item name="29st">Heriot-Watt University</item>
+        <item name="30st">Heythrop College University of London</item>
+        <item name="31st">Imperial College London</item>
+        <item name="32st">Keele University</item>
+        <item name="33st">Kings College London</item>
+        <item name="34st">Kingston University</item>
+        <item name="35st">Lancaster University</item>
+        <item name="36st">Leeds Beckett University</item>
+        <item name="36st">Leeds College of Art</item>
+        <item name="36st">Leeds Trinity University</item>
+        <item name="37st">Liverpool Hope University</item>
+        <item name="38st">Liverpool John Moores University</item>
+        <item name="39st">London Business School</item>
+        <item name="40st">London Metropolitan University</item>
+        <item name="41st">London School of Hygiene &amp; Tropical Medicine University of London</item>
+        <item name="42st">London South Bank University</item>
+        <item name="43st">Loughborough University</item>
+        <item name="44st">Manchester Metropolitan University</item>
+        <item name="45st">Middlesex University</item>
+        <item name="46st">Newcastle University</item>
+        <item name="47st">Newman University</item>
+        <item name="48st">Northumbria University</item>
+        <item name="49st">Norwich University of the Arts</item>
+        <item name="50st">Nottingham Trent University</item>
+        <item name="51st">Oxford Brooks University</item>
+        <item name="52st">Plymouth College of Arts</item>
+        <item name="53st">Plymouth University</item>
+        <item name="54st">Queen Margaret University</item>
+        <item name="55st">Queen Mary University of London</item>
+        <item name="56st">Queens University Belfast</item>
+        <item name="57st">Regents University London</item>
+        <item name="58st">Richmond The African International University in London</item>
+        <item name="59st">Robert Gordon University</item>
+        <item name="60st">Royal Academy of Music University of London</item>
+        <item name="61st">Royal Agricultural University</item>
+        <item name="62st">Royal College of Art</item>
+        <item name="63st">Royal College of Music</item>
+        <item name="64st">Royal Conservatoire of Scotland</item>
+        <item name="65st">Royal Holloway University of London</item>
+        <item name="66st">Royal Veterinary College University of London</item>
+        <item name="67st">School of Advanced Study University of London</item>
+        <item name="68st">Scotlands Rural College</item>
+        <item name="69st">Sheffield Hallam University</item>
+        <item name="70st">SOAS University of London</item>
+        <item name="71st">Southampton Solent University</item>
+        <item name="71st">St. Georges University of London</item>
+        <item name="73st">St. Marys University Twickenham</item>
+        <item name="74st">Staffordshire University</item>
+        <item name="75st">Swansea University</item>
+        <item name="76st">Teesside University</item>
+        <item name="77st">The Courtauld Institute of Art University of London</item>
+        <item name="78st">The London School of Economics &amp; Political Science</item>
+        <item name="79st">Royal Central School of Speech &amp; Drama</item>
+        <item name="80st">The University Buckingham</item>
+        <item name="82st">The University Edinburgh</item>
+        <item name="83st">The University Hull</item>
+        <item name="84st">The University of Law</item>
+        <item name="85st">The University of Manchester</item>
+        <item name="86st">The University of Northampton</item>
+        <item name="87st">The University of Nottingham</item>
+        <item name="88st">The University of Sheffield</item>
+        <item name="89st">The University of Warwick</item>
+        <item name="90st">The University of Winchester</item>
+        <item name="91st">The University of York</item>
+        <item name="92st">Ulster University</item>
+        <item name="93st">University College Birmingham</item>
+        <item name="94st">University College London</item>
+        <item name="95st">University for the Creative Arts</item>
+        <item name="96st">University of Aberdeen</item>
+        <item name="97st">University of Abertay Dundee</item>
+        <item name="98st">University of Bath</item>
+        <item name="99st">University of Bedfordshire</item>
+        <item name="100st">University of Birmingham</item>
+        <item name="101st">University of Bolton</item>
+        <item name="104st">University of Bradford</item>
+        <item name="103st">University of Brighton</item>
+        <item name="105st">University of Bristol</item>
+        <item name="106st">University of Cambridge</item>
+        <item name="107st">University of Central Lancashire </item>
+        <item name="108st">University of Chester</item>
+        <item name="109st">University of Chichester</item>
+        <item name="110st">University of Cumbria</item>
+        <item name="111st">University of Dundee</item>
+        <item name="112st">University of East Anglia</item>
+        <item name="113st">University of East London</item>
+        <item name="114st">University of Essex</item>
+        <item name="115st">University of Glosgow</item>
+        <item name="116st">University of Gloucestershire</item>
+        <item name="117st">University of Greenwich</item>
+        <item name="118st">University of Hertfordshire</item>
+        <item name="119st">University of Huddersfield</item>
+        <item name="120st">University of Kent</item>
+        <item name="121st">University of Leeds</item>
+        <item name="122st">University of Leicester</item>
+        <item name="123st">University of Lincoln</item>
+        <item name="124st">University of Liverpool</item>
+        <item name="125st">University of London</item>
+        <item name="126st">University of Oxford</item>
+        <item name="127st">University of Portsmouth</item>
+        <item name="128st">University of Reading</item>
+        <item name="129st">University of Roehampton</item>
+        <item name="122st">University of Salford</item>
+        <item name="122st">University of Southampton</item>
+        <item name="122st">University of St. Andrews</item>
+        <item name="122st">University of St Marks &amp; St John</item>
+        <item name="122st">University of Strathclyde</item>
+        <item name="122st">University of Sunderland</item>
+        <item name="122st">University of Surrey</item>
+        <item name="122st">University of Sussex</item>
+        <item name="122st">University of the Arts London</item>
+        <item name="122st">University of the Highlands &amp; Islands</item>
+        <item name="122st">University of the West of England</item>
+        <item name="122st">University of the West of Scotland</item>
+        <item name="122st">University of Wales</item>
+        <item name="122st">University of Wales Trinity Saint David</item>
+        <item name="122st">University of West London</item>
+        <item name="122st">University of Westminster</item>
+        <item name="122st">University of Wolverhampton</item>
+        <item name="122st">University of Worcester</item>
+        <item name="122st">York St John University</item>
+
+
+
+
+    </string-array>
 
     <string-array name="nigeria_choose_community">
         <item name="1st">Abia State University</item>
@@ -283,7 +483,6 @@
 
     </string-array>
 
-
     <string-array name="ghana_choose_community">
         <item name="1st">Accra Institute of Technology</item>
         <item name="2st">Accra Polytechnic</item>
@@ -351,6 +550,65 @@
 
     </string-array>
 
+    <string-array name="botswana_choose_community">
+        <item name="1st">University of Botswana</item>
+        <item name="2st">Botswana Accountancy College</item>
+        <item name="3st">Botho University</item>
+        <item name="4st">Botswana College of Agriculture</item>
+        <item name="5st">Botswana International University of Science &amp; Technology</item>
+
+    </string-array>
+
+    <string-array name="namibia_choose_community">
+        <item name="1st">Namibia University of Science &amp; Technology</item>
+        <item name="2st">The International University of Management</item>
+        <item name="3st">University of Namibia</item>
+    </string-array>
+
+    <string-array name="zambia_choose_community">
+        <item name="1st">Cavendish University</item>
+        <item name="2st">Copperstone University</item>
+        <item name="3st">DMI-St. Eugene University</item>
+        <item name="4st">Lusaka Apex Medical University</item>
+        <item name="5st">Mulungushi University</item>
+        <item name="6st">Northrise University</item>
+        <item name="7st">Rusangu University</item>
+        <item name="1st">The Copperbelt University</item>
+        <item name="9st">University of Lusaka</item>
+        <item name="9st">University of Zambia</item>
+        <item name="1ost">Zambia Catholic University</item>
+
+    </string-array>
+
+    <string-array name="zimbabwe_choose_community">
+        <item name="1st">Africa University</item>
+        <item name="2st">Bindura University of Science Education</item>
+        <item name="3st">Catholic University of Zimbabwe</item>
+        <item name="4st">Chinhoyi University of Technology</item>
+        <item name="5st">Great Zimbabwe University</item>
+        <item name="6st">Harare Institute of Technology</item>
+        <item name="7st">Lupane State University</item>
+        <item name="1st">Midlands State University</item>
+        <item name="9st">National University of Science &amp; Technology</item>
+        <item name="9st">Solusi University</item>
+        <item name="1ost">Womens University in Africa</item>
+
+    </string-array>
+    <string-array name="sierra_leone_choose_community">
+        <item name="1st">Eastern Polytechnic</item>
+        <item name="2st">Milton Margai College of Education &amp; Technology</item>
+        <item name="3st">Njala University</item>
+        <item name="4st">University of Makeni</item>
+
+    </string-array>
+
+    <string-array name="swaziland_choose_community">
+        <item name="1st">University of Swaziland</item>
+
+
+    </string-array>
+
+
 
     <string-array name="south_africa_choose_community">
         <item name="1st">Cape Peninsula University of Technology</item>
@@ -385,11 +643,25 @@
 
     </string-array>
 
+    <string-array name="lesotho_choose_community">
+        <item name="1st">National University of Lesotho</item>
+        <item name="2st">Lesotho College of Education</item>
+
+    </string-array>
+
     <string-array name="mauritius_choose_community">
         <item name="1st">University of Mauritius</item>
         <item name="2st">University of Technology Mauritius</item>
         <item name="2st">Mauritius Institute of Education</item>
         <item name="2st">Mahatma Gandhi Institute</item>
+
+    </string-array>
+
+    <string-array name="liberia_choose_community">
+        <item name="1st">AME Zion University</item>
+        <item name="2st">Cuttington University</item>
+        <item name="2st">United Methodist University</item>
+        <item name="2st">University of Liberia</item>
 
     </string-array>
 
@@ -422,69 +694,6 @@
         <item name="Alumni">Alumni</item>
     </string-array>
 
-    <string-array name="choose_campus">
-        <item name="CBD">Allupe Campus</item>
-        <item name="CBD">Arusha Campus</item>
-        <item name="CBD">Akuru Campus</item>
-        <item name="MC">Main Campus</item>
-        <item name="CBD">CBD</item>
-        <item name="CBD">Bondo Campus</item>
-        <item name="CBD">Nyeri Campus</item>
-        <item name="CBD">Mombasa Campus</item>
-        <item name="CBD">Nairobi City Campus</item>
-        <item name="CBD">Nakuru Town Campus</item>
-        <item name="CBD">Njoro Campus</item>
-        <item name="DU">Karen Campus</item>
-        <item name="CBD">Kitale Campus</item>
-        <item name="CBD">Kisii Campus</item>
-        <item name="CBD">Karatina Town Campus</item>
-        <item name="CBD">Kericho Campus</item>
-        <item name="CBD">Kerugoya Town Campus</item>
-        <item name="CBD">Kigali Campus</item>
-        <item name="CBD">Kitui Campus</item>
-        <item name="CBD">Kisumu Campus</item>
-        <item name="CBD">Karbanet Campus</item>
-        <item name="CBD">Kipipiri Campus</item>
-        <item name="CBD">Kajiado Campus</item>
-        <item name="CBD">Kenyatta National Hospital Campus</item>
-        <item name="CBD">Kenya Science Campus</item>
-        <item name="CBD">Kikuyu Campus</item>
-
-        <item name="DEDAN">Westlands Campus </item>
-        <item name="JKUAT">Jomo Kenyatta University of Agriculture &amp;Technology</item>
-        <item name="EU">Egerton University</item>
-        <item name="Strathmore">Strathmore University</item>
-    </string-array>
-
-    <string-array name="choose_cour">
-        <item name="1">Architectural</item>
-        <item name="2">Automobile Engineering</item>
-        <item name="1">Aeronuticals &amp; Avionics Studies </item>
-        <item name="1">Agriculture &amp; Veterinary Medicine</item>
-        <item name="1">Applied &amp; Pure Sciences</item>
-        <item name="1">Chemical Engineering</item>
-        <item name="1">Civil Engineering </item>
-        <item name="1">Computer Engineering</item>
-        <item name="1">Computer Science &amp; Information Technology</item>
-        <item name="1">Computer Science &amp; Mathimatics</item>
-        <item name="1">Electrical &amp; Electronics Engineering</item>
-        <item name="1">Electronics &amp; Communication Engineering</item>
-        <item name="1">Electronics &amp; Telecommunication Engineering</item>
-        <item name="1">Fashion Design</item>
-        <item name="1">Food Technology</item>
-        <item name="1">Interior Design &amp; Decoration</item>
-        <item name="1">Library &amp; Information Information Sciences</item>
-        <item name="1">Mechanical Engineering</item>
-        <item name="1">Marine Engineering</item>
-        <item name="1">Medical Laboratory Technology</item>
-        <item name="1">Textile Technology</item>
-        <item name="Male">I.T</item>
-        <item name="Female">Business Administration</item>
-        <item name="Female">Law</item>
-        <item name="Female">Medicine &amp; Health Sciences</item>
-
-    </string-array>
-
 
     <string-array name="choose_course">
 
@@ -509,13 +718,25 @@
 
     <string-array name="choose_country">
         <item name="KE">Kenya</item>
+        <item name="BT">Botswana</item>
+        <item name="CM">Cameroon</item>
+        <item name="GM">Gambia</item>
         <item name="GH">Ghana</item>
+        <item name="LS">Lesotho</item>
+        <item name="LB">Liberia</item>
+        <item name="GH">Malawi</item>
         <item name="GH">Mauritius</item>
+        <item name="NG">Namibia</item>
         <item name="NG">Nigeria</item>
         <item name="SA">Seychelles</item>
+        <item name="SA">Sierra Leone</item>
         <item name="SA">South Africa</item>
+        <item name="SW">Swaziland</item>
         <item name="TZ">Tanzania</item>
         <item name="UG">Uganda</item>
+        <item name="UK">United Kingdom</item>
+        <item name="ZB">Zambia</item>
+        <item name="ZM">Zimbabwe</item>
 
     </string-array>
 

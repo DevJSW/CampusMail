@@ -2,12 +2,9 @@ package com.campusmail.campusmail;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -34,6 +31,7 @@ import com.squareup.picasso.Picasso;
 public class ProfileUserLettersActivity extends AppCompatActivity {
 
     private String mPostKey = null;
+    private String post_name = null;
     private TextView mPostName, mPostLocation, mPostCommunity;
     private ImageView mPostImage;
     private TextView mNoPostTxt;
@@ -44,7 +42,11 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
     private Query mQueryPostComment;
     private ProgressBar mProgressBar;
     private RecyclerView mLettersList;
-
+    private Query mQueryComments;
+    private Query mQueryLikes;
+    private Boolean mProcessLike = false;
+    private DatabaseReference mDatabaseLike;
+    private DatabaseReference mDatabaseComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Letters");
 
+        mDatabaseComment = FirebaseDatabase.getInstance().getReference().child("Comments");
+        mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Likes");
         mQueryPostComment = mDatabase.orderByChild("uid").equalTo(mPostKey);
        // mQueryPostComment = mDatabase.orderByChild("uid").equalTo(user_id);
 
@@ -97,7 +101,7 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
         mDatabaseUsers.child(mPostKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String post_name = (String) dataSnapshot.child("name").getValue();
+                post_name = (String) dataSnapshot.child("name").getValue();
                 String post_image = (String) dataSnapshot.child("image").getValue();
 
                 mPostName.setText(post_name);
@@ -176,6 +180,7 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
                 viewHolder.setTime(model.getTime());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
                 viewHolder.setPhoto(getApplicationContext(), model.getPhoto());
+                viewHolder.setLikeBtn(post_key);
 
 
                 mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
@@ -208,6 +213,34 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
 
                     }
                 });
+
+                mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(post_key);
+                mQueryComments.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        viewHolder.mCommentCount.setText(dataSnapshot.getChildrenCount() + "");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
+                mQueryLikes.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        viewHolder.mLikeCount.setText(dataSnapshot.getChildrenCount() + "");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
 
 
                 viewHolder.mPostImg.setOnClickListener(new View.OnClickListener() {
@@ -264,44 +297,44 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
                 });
 
 
-                mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
-
+                viewHolder.mCallBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onClick(View v) {
 
-                        final String phone = (String) dataSnapshot.child("phone").getValue();
+                        mProcessLike = true;
 
-                        viewHolder.mCallBtn.setOnClickListener(new View.OnClickListener() {
+                        mDatabaseLike.addValueEventListener(new ValueEventListener() {
                             @Override
-                            public void onClick(View v) {
+                            public void onDataChange(DataSnapshot dataSnapshot) {
 
+                                if(mProcessLike) {
 
-                                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                                callIntent.setData(Uri.parse("tel:" + phone));
-                                if (ActivityCompat.checkSelfPermission(ProfileUserLettersActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                    // TODO: Consider calling
-                                    //    ActivityCompat#requestPermissions
-                                    // here to request the missing permissions, and then overriding
-                                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                    //                                          int[] grantResults)
-                                    // to handle the case where the user grants the permission. See the documentation
-                                    // for ActivityCompat#requestPermissions for more details.
-                                    return;
+                                    if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
+
+                                        mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).removeValue();
+                                        mDatabaseLike.child(post_key).child("post_key").removeValue();
+                                        mProcessLike = false;
+                                    }else {
+
+                                        mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).setValue(post_name);
+                                        mDatabaseLike.child(post_key).child("post_key").setValue(post_key);
+
+                                        mProcessLike = false;
+
+                                    }
+
                                 }
-                                startActivity(callIntent);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
                             }
                         });
 
 
                     }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
                 });
-
-
             }
 
         };
@@ -317,9 +350,9 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
 
         View mView;
 
-        DatabaseReference mDatabaseViewsCount;
-        TextView mCountField;
-        FirebaseAuth auth;
+        DatabaseReference mDatabaseLike;
+        FirebaseAuth mAuth;
+        TextView mCommentCount, mLikeCount;
         DatabaseReference mDatabase, mDatabaseLetter;
         ImageView mCardPhoto, mPostImg, mCallBtn,mCommentBtn, mShareBtn, mInside, mDelete;
         ProgressBar mProgressBar;
@@ -338,14 +371,40 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
             mDelete = (ImageView) mView.findViewById(R.id.delete);
 
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
-            mDatabaseViewsCount = FirebaseDatabase.getInstance().getReference().child("Views_Count");
-            auth = FirebaseAuth.getInstance();
+            mAuth = FirebaseAuth.getInstance();
+            mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Likes");
+            mDatabaseLike.keepSynced(true);
+            mCommentCount = (TextView) mView.findViewById(R.id.commentCount);
+            mLikeCount = (TextView) mView.findViewById(R.id.likeCount);
 
-            mCountField = (TextView)mView.findViewById(R.id.post_count);
 
             mDatabaseLetter = FirebaseDatabase.getInstance().getReference().child("Letters");
             mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
+
+        }
+
+
+        public void setLikeBtn(final String post_key) {
+
+            mDatabaseLike.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
+
+                        mCallBtn.setImageResource(R.drawable.like_btn_red);
+                    } else {
+                        mCallBtn.setImageResource(R.drawable.like_btn_black);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
         }
 

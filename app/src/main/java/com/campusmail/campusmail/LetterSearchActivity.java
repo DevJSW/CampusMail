@@ -2,10 +2,7 @@ package com.campusmail.campusmail;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.github.curioustechizen.ago.RelativeTimeTextView;
@@ -35,18 +31,24 @@ import com.squareup.picasso.Picasso;
 public class LetterSearchActivity extends AppCompatActivity {
 
     private String community_id = null;
+    private String post_name = null;
     SwipeRefreshLayout mSwipeRefreshLayout;
     private ImageView searchBtn;
     private EditText searchInput;
     private DatabaseReference mDatabaseUsers;
+    private DatabaseReference mDatabaseComment;
+    private DatabaseReference mDatabaseLike;
     private DatabaseReference mCurrentDatabaseUser;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private ProgressBar mProgressBar;
     private RecyclerView mLettersList;
     private FirebaseUser mCurrentUser;
+    private Boolean mProcessLike = false;
 
     private Query mQueryLetters;
+    private Query mQueryComments;
+    private Query mQueryLikes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,8 @@ public class LetterSearchActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Letters");
+        mDatabaseComment = FirebaseDatabase.getInstance().getReference().child("Comments");
+        mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Likes");
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar2);
         mLettersList = (RecyclerView) findViewById(R.id.letters_list);
         mLettersList.setLayoutManager(new LinearLayoutManager(this));
@@ -176,6 +180,7 @@ public class LetterSearchActivity extends AppCompatActivity {
                 viewHolder.setName(model.getName());
                 viewHolder.setTime(model.getTime());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
+                viewHolder.setLikeBtn(post_key);
 
 
                 mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
@@ -217,8 +222,44 @@ public class LetterSearchActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
+                        final String post_photo = (String) dataSnapshot.child("photo").getValue();
+                        final String post_story = (String) dataSnapshot.child("story").getValue();
+
+                        if (post_photo != null) {
+
+                            viewHolder.mCardPhoto.setVisibility(View.VISIBLE);
+                            viewHolder.mProgressBar.setVisibility(View.VISIBLE);
+                            viewHolder.mInside.setVisibility(View.VISIBLE);
+
+                            viewHolder.setPhoto(getApplicationContext(), model.getPhoto());
+
+                        } else {
+
+                            viewHolder.mCardPhoto.setVisibility(View.GONE);
+                            viewHolder.mProgressBar.setVisibility(View.GONE);
+                            viewHolder.mInside.setVisibility(View.GONE);
+
+                            //viewHolder.mAttchBtn.setVisibility(View.GONE);
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
                         final String post_story = (String) dataSnapshot.child("story").getValue();
                         final String post_title = (String) dataSnapshot.child("title").getValue();
+                        post_name = (String) dataSnapshot.child("name").getValue();
 
                         viewHolder.mShareBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -266,45 +307,69 @@ public class LetterSearchActivity extends AppCompatActivity {
                     }
                 });
 
-                mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
+                mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(post_key);
+                mQueryComments.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        final String phone = (String) dataSnapshot.child("phone").getValue();
-                        final String name = (String) dataSnapshot.child("name").getValue();
-
-                        if (phone == null) {
-
-                            Toast.makeText(getApplicationContext(), "Sorry! Campusmail does'nt have " +name+ "'s contact", Toast.LENGTH_SHORT).show();
-
-                        } else {
-
-                            viewHolder.mCall.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                                    callIntent.setData(Uri.parse("tel:" + phone));
-                                    if (ActivityCompat.checkSelfPermission(LetterSearchActivity.this, android.Manifest.permission.CALL_PHONE) !=
-                                            PackageManager.PERMISSION_GRANTED) {
-                                        // TODO: Consider calling
-                                        //    ActivityCompat#requestPermissions
-                                        // here to request the missing permissions, and then overriding
-                                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                        //                                          int[] grantResults)
-                                        // to handle the case where the user grants the permission. See the documentation
-                                        // for ActivityCompat#requestPermissions for more details.
-                                        return;
-                                    }
-                                    startActivity(callIntent);
-
-
-                                }
-                            });
-                        }
+                        viewHolder.mCommentCount.setText(dataSnapshot.getChildrenCount() + "");
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
+                mQueryLikes.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        viewHolder.mLikeCount.setText(dataSnapshot.getChildrenCount() + "");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                viewHolder.mCall.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        mProcessLike = true;
+
+                        mDatabaseLike.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                if(mProcessLike) {
+
+                                    if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
+
+                                        mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).removeValue();
+                                        mDatabaseLike.child(post_key).child("post_key").removeValue();
+                                        mProcessLike = false;
+                                    }else {
+
+                                        mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).setValue(post_name);
+                                        mDatabaseLike.child(post_key).child("post_key").setValue(post_key);
+
+                                        mProcessLike = false;
+
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
 
                     }
                 });
@@ -335,6 +400,9 @@ public class LetterSearchActivity extends AppCompatActivity {
         View mView;
 
         ImageView mChatBtn, mInside, mImage, mAttchBtn ,mCardPhoto, mCall, mShareBtn;
+        DatabaseReference mDatabaseLike;
+        FirebaseAuth mAuth;
+        TextView mCommentCount, mLikeCount;
         DatabaseReference mDatabase;
         ProgressBar mProgressBar;
 
@@ -343,6 +411,9 @@ public class LetterSearchActivity extends AppCompatActivity {
 
             mView = itemView;
 
+            mAuth = FirebaseAuth.getInstance();
+            mDatabaseLike = FirebaseDatabase.getInstance().getReference().child("Likes");
+            mDatabaseLike.keepSynced(true);
             mDatabase = FirebaseDatabase.getInstance().getReference().child("Questions");
             mChatBtn = (ImageView)mView.findViewById(R.id.chatBtn);
             mInside = (ImageView) mView.findViewById(R.id.inside_view2);
@@ -351,7 +422,32 @@ public class LetterSearchActivity extends AppCompatActivity {
             mImage = (ImageView) mView.findViewById(R.id.post_image);
             mCall = (ImageView)mView.findViewById(R.id.buttonCall);
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
+            mCommentCount = (TextView) mView.findViewById(R.id.commentCount);
+            mLikeCount = (TextView) mView.findViewById(R.id.likeCount);
 
+
+        }
+
+        public void setLikeBtn(final String post_key) {
+
+            mDatabaseLike.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
+
+                        mCall.setImageResource(R.drawable.like_btn_red);
+                    } else {
+                        mCall.setImageResource(R.drawable.like_btn_black);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
         }
 

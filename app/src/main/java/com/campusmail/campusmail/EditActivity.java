@@ -318,7 +318,106 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
             mFlag.setImageResource(R.drawable.ic_mauritius_flag);
 
+        }else if (spinner_country.getSelectedItem().equals("Botswana")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.botswana_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_botswana_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Cameroon")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.cameroon_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_cameroon_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Gambia")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.gambia_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_gambia_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Malawi")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.malawi_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_malawi_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Lesotho")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.lesotho_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_lesotho_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Liberia")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.liberia_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_liberia_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Namibia")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.namibia_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_namibia_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Zambia")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.zambia_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_zambia_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Zimbabwe")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.zimbabwe_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_zimbabwe_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Swaziland")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.swaziland_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_swaziland_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("Sierra Leone")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.sierra_leone_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_sierraleone_flag);
+
+        }else if (spinner_country.getSelectedItem().equals("United Kingdom")) {
+
+            community_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.uk_choose_community, android.R.layout.simple_dropdown_item_1line);
+            spinner_community.setAdapter(community_adapter);
+
+            mFlag.setImageResource(R.drawable.ic_uk_flag);
+
         }
+
+
+
 
 
     }
