@@ -56,12 +56,11 @@ public class ProfileEditActivity extends AppCompatActivity implements AdapterVie
 
         mPostCommunity = (TextView) findViewById(R.id.post_community);
         mPostYear = (TextView) findViewById(R.id.post_year);
-        mPostGender = (TextView) findViewById(R.id.post_gender);
         mPostCampus = (TextView) findViewById(R.id.post_campus);
         mPostLocation = (TextView) findViewById(R.id.post_location);
         mPostYear = (TextView) findViewById(R.id.post_year);
         mPostGender = (TextView) findViewById(R.id.post_gender);
-        mPostFaculty = (TextView) findViewById(R.id.post_gender);
+        mPostFaculty = (TextView) findViewById(R.id.post_faculty);
 
         mprogress = new ProgressDialog(this);
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -189,6 +188,7 @@ public class ProfileEditActivity extends AppCompatActivity implements AdapterVie
                             mDatabaseUsers.child("location").setValue(dataSnapshot.child("location").getValue());
                             mDatabaseUsers.child("campus").setValue(dataSnapshot.child("campus").getValue());
                             mDatabaseUsers.child("year").setValue(dataSnapshot.child("year").getValue());
+                            mDatabaseUsers.child("gender").setValue(dataSnapshot.child("gender").getValue());
 
                             //mDatabaseUsers.child(user_id).child("location").setValue(country);
                             mDatabaseUsers.child(user_id).child("image").setValue(downloadUrl.toString());

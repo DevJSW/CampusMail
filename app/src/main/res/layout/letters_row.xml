@@ -171,8 +171,7 @@
         android:layout_width="20dp"
         android:layout_height="13dp"
         android:id="@+id/envelope"
-        android:layout_marginLeft="5dp"
-        android:src="@drawable/ic_views"/>
+        android:layout_marginLeft="5dp" />
 
 
     <TextView

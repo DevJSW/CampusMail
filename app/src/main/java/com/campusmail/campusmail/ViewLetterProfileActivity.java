@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class ViewLetterProfileActivity extends AppCompatActivity {
 
-    private TextView mPostName, mPostLocation, mPostCommunity, mPostGender, mPostSkill, mPostBio, mPostWeb, mPostPhone, mPostYear, mPostCampus;
+    private TextView mPostName, mPostLocation, mPostCommunity,  mPostFaculty, mPostGender, mPostSkill, mPostBio, mPostWeb, mPostPhone, mPostYear, mPostCampus;
     private ImageView mPostImage, mSendDM;
 
     private String mPostKey = null;
@@ -44,6 +44,7 @@ public class ViewLetterProfileActivity extends AppCompatActivity {
         mPostYear = (TextView) findViewById(R.id.post_year);
         mPostGender = (TextView) findViewById(R.id.post_gender);
         mPostCampus = (TextView) findViewById(R.id.post_campus);
+        mPostFaculty = (TextView) findViewById(R.id.post_faculty);
 
         mPostImage = (ImageView) findViewById(R.id.post_image);
         mSendDM = (ImageView) findViewById(R.id.sendDMBtn);
@@ -84,6 +85,7 @@ public class ViewLetterProfileActivity extends AppCompatActivity {
                         String post_campus = (String) dataSnapshot.child("campus").getValue();
                         String post_gender = (String) dataSnapshot.child("gender").getValue();
                         String post_year = (String) dataSnapshot.child("year").getValue();
+                        String post_faculty = (String) dataSnapshot.child("faculty").getValue();
                         user_uid = (String) dataSnapshot.child("uid").getValue();
 
                         mPostName.setText(post_name);
@@ -96,6 +98,7 @@ public class ViewLetterProfileActivity extends AppCompatActivity {
                         mPostCampus.setText(post_campus);
                         mPostGender.setText(post_gender);
                         mPostYear.setText(post_year);
+                        mPostFaculty.setText(post_faculty);
 
                         Picasso.with(ViewLetterProfileActivity.this).load(post_image).into(mPostImage);
                     }

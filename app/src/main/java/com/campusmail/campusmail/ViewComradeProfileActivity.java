@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class ViewComradeProfileActivity extends AppCompatActivity {
 
-    private TextView mPostName, mPostLocation, mPostCommunity, mPostGender, mPostSkill, mPostBio, mPostWeb, mPostPhone, mPostYear, mPostCampus;
+    private TextView mPostName, mPostLocation, mPostCommunity, mPostGender,  mPostFaculty, mPostSkill, mPostBio, mPostWeb, mPostPhone, mPostYear, mPostCampus;
     private ImageView mPostImage, mSendDM;
     private String user_uid = null;
     private String mPostKey = null;
@@ -40,6 +40,7 @@ public class ViewComradeProfileActivity extends AppCompatActivity {
         mPostYear = (TextView) findViewById(R.id.post_year);
         mPostGender = (TextView) findViewById(R.id.post_gender);
         mPostCampus = (TextView) findViewById(R.id.post_campus);
+        mPostFaculty = (TextView) findViewById(R.id.post_faculty);
 
         mPostImage = (ImageView) findViewById(R.id.post_image);
         mSendDM = (ImageView) findViewById(R.id.sendDMBtn);
@@ -78,6 +79,7 @@ public class ViewComradeProfileActivity extends AppCompatActivity {
                         String post_gender = (String) dataSnapshot.child("gender").getValue();
                         String post_year = (String) dataSnapshot.child("year").getValue();
                         user_uid = (String) dataSnapshot.child("uid").getValue();
+                        String post_faculty = (String) dataSnapshot.child("faculty").getValue();
 
                         mPostName.setText(post_name);
                         mPostCommunity.setText(post_community);
@@ -89,6 +91,7 @@ public class ViewComradeProfileActivity extends AppCompatActivity {
                         mPostCampus.setText(post_campus);
                         mPostGender.setText(post_gender);
                         mPostYear.setText(post_year);
+                        mPostFaculty.setText(post_faculty);
 
                         Picasso.with(ViewComradeProfileActivity.this).load(post_image).into(mPostImage);
                     }

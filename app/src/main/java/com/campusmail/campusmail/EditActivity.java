@@ -162,6 +162,11 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
             return;
         }
 
+        if (mPostName == null) {
+            Toast.makeText(getApplicationContext(), "Add REAL Name!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (mPostCampus == null) {
             Toast.makeText(getApplicationContext(), "Hey add your CAMPUS!", Toast.LENGTH_SHORT).show();
             return;

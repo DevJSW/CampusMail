@@ -4,10 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -161,7 +158,7 @@ public class SentDMActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Letters, LetterViewHolder> firebaseRecyclerAdapter = new  FirebaseRecyclerAdapter<Letters, LetterViewHolder>(
 
                 Letters.class,
-                R.layout.letter_mail_row_delete,
+                R.layout.letter_mail_row_delete_dm,
                 LetterViewHolder.class,
                 mQueryLetters
 
@@ -347,50 +344,6 @@ public class SentDMActivity extends AppCompatActivity {
                 });
 
 
-                viewHolder.mChatBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent cardonClick = new Intent(SentDMActivity.this, DmChatActivity.class);
-                        cardonClick.putExtra("heartraise_id", post_key );
-                        startActivity(cardonClick);
-                    }
-                });
-
-                mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        final String phone = (String) dataSnapshot.child("phone").getValue();
-
-                        viewHolder.mCall.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                                callIntent.setData(Uri.parse("tel:"+ phone));
-                                if (ActivityCompat.checkSelfPermission(SentDMActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                    // TODO: Consider calling
-                                    //    ActivityCompat#requestPermissions
-                                    // here to request the missing permissions, and then overriding
-                                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                    //                                          int[] grantResults)
-                                    // to handle the case where the user grants the permission. See the documentation
-                                    // for ActivityCompat#requestPermissions for more details.
-                                    return;
-                                }
-                                startActivity(callIntent);
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
-
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -426,13 +379,10 @@ public class SentDMActivity extends AppCompatActivity {
             mView = itemView;
 
             mDatabase = FirebaseDatabase.getInstance().getReference().child("Directmails");
-            mChatBtn = (ImageView)mView.findViewById(R.id.chatBtn);
-            mCall = (ImageView)mView.findViewById(R.id.buttonCall);
             mInside = (ImageView) mView.findViewById(R.id.inside_view2);
             mDelete = (ImageView) mView.findViewById(R.id.delete);
             mName = (TextView) mView.findViewById(R.id.post_name);
             mCardPhoto = (ImageView) mView.findViewById(R.id.post_photo);
-            mShareBtn = (ImageView) mView.findViewById(R.id.shareBtn);
             mImage = (ImageView) mView.findViewById(R.id.post_image);
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
 

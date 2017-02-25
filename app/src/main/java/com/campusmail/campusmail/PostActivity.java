@@ -235,7 +235,6 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
 
                     mPostImage.setVisibility(View.VISIBLE);
                 }
-
                 return super.onOptionsItemSelected(item);
         }
     }

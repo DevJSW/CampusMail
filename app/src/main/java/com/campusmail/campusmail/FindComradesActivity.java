@@ -80,8 +80,6 @@ public class FindComradesActivity extends AppCompatActivity {
                 startActivity(cardonClick);
 
 
-
-
             }
         });
 
