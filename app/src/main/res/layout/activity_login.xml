@@ -17,10 +17,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/topImg"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="80dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/splash"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="80dp"
         android:scaleType="fitXY" />
 
     <LinearLayout
