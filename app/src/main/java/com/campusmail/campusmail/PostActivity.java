@@ -48,7 +48,8 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
     private StorageReference mStorage;
     private Uri mImageUri = null;
     private static int GALLERY_REQUEST =1;
-
+    private boolean Anonymous = false;
+    private Menu menu;
 
     Spinner spinner_community, spinner_campus;
     ArrayAdapter community_adapter, campus_adapter;
@@ -90,7 +91,8 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
         mPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startPosting();
+
+                 startPosting();
             }
         });
 
@@ -129,6 +131,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 newPost.child("story").setValue(story_val);
+                                newPost.child("anonymous").setValue(Anonymous);
                                 newPost.child("title").setValue(title_val);
                                 newPost.child("photo").setValue(downloadUrl.toString());
                                 newPost.child("name").setValue(dataSnapshot.child("name").getValue());
@@ -217,6 +220,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.post_menu, menu);
+        this.menu = menu;
         return true;
     }
 
@@ -225,16 +229,24 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
 
         int id = item.getItemId();
 
+
         switch (item.getItemId()) {
 
             case android.R.id.home:
                 this.finish();
+
                 return true;
             default:
                 if (id == R.id.action_settings) {
 
                     mPostImage.setVisibility(View.VISIBLE);
-                }
+
+                } else if (id == R.id.action_visibility) {
+
+                    Anonymous = true;
+                    menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_visibility_));
+            }
+
                 return super.onOptionsItemSelected(item);
         }
     }

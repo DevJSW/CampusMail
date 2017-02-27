@@ -658,7 +658,7 @@ public class MainActivity extends AppCompatActivity
 
             Intent myIntent = new Intent(Intent.ACTION_SEND);
             myIntent.setType("text/plain");
-            String shareBody =" Hey! DOWNLOAD CampusMail on play store & start reading & posting mails to students on your campus https://play.google.com/store/apps/details?id=com.campusmail.campusmail";
+            String shareBody ="https://play.google.com/store/apps/details?id=com.campusmail.campusmail";
             String shareSub = "Dear ";
             myIntent.putExtra(Intent.EXTRA_SUBJECT,shareBody);
             myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);

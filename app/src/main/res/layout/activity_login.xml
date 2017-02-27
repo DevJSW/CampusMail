@@ -17,10 +17,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/topImg"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/splash"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="40dp"
         android:scaleType="fitXY" />
 
     <LinearLayout
@@ -30,6 +30,22 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:scaleType="fitXY"
+            android:id="@+id/googleBtn"
+            android:background="@drawable/google_btn_white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="10dp"
+            android:textSize="15dp"
+            android:text="or"/>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -43,7 +59,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp">
+            android:paddingTop="4dp">
 
             <EditText
                 android:id="@+id/email"
@@ -111,7 +127,7 @@
         <Button
             android:id="@+id/btn_signup"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@null"
             android:text="Create Account"
             android:textAllCaps="false"
