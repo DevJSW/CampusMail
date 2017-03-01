@@ -17,10 +17,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/topImg"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/splash"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="35dp"
         android:scaleType="fitXY" />
 
     <LinearLayout
@@ -31,12 +31,16 @@
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:scaleType="fitXY"
-            android:id="@+id/googleBtn"
-            android:background="@drawable/google_btn_white"/>
+
+            <ImageButton android:id="@+id/googleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/google_btn_white"
+
+                />
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -105,7 +109,7 @@
         <Button
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:background="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:text="@string/btn_login"

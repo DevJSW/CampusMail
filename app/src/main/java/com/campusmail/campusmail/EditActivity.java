@@ -1,6 +1,8 @@
 package com.campusmail.campusmail;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -236,11 +238,54 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
 
         }
         if (id == R.id.action_save) {
-            startPosting();
+
+            AlertDialog diaBox = AskOption();
+            diaBox.show();
+
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private AlertDialog AskOption() {
+
+        String community = spinner_community.getSelectedItem().toString().trim();
+        final String faculty = spinner_course.getSelectedItem().toString().trim();
+        final String year = spinner_year.getSelectedItem().toString().trim();
+        String name = mPostName.getText().toString().trim();
+
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(EditActivity.this)
+                //set message, title, and icon
+                .setTitle("Is this Info True!")
+                .setMessage("I'm " + name + " a student at " +community + " specializing in the field of " + faculty + " currently on my " + year + "."  )
+
+                .setPositiveButton("Yap! that's correct", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //your deleting code
+
+                        startPosting();
+
+                        dialog.dismiss();
+                    }
+
+                })
+
+
+
+                .setNegativeButton("Nop, Something's wrong", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

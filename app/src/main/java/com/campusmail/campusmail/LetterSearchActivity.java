@@ -321,8 +321,8 @@ public class LetterSearchActivity extends AppCompatActivity {
                 });
 
 
-                mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
-                mQueryLikes.addListenerForSingleValueEvent(new ValueEventListener() {
+                //mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
+                mDatabaseLike.child(post_key).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         viewHolder.mLikeCount.setText(dataSnapshot.getChildrenCount() + "");

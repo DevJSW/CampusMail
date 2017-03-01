@@ -30,7 +30,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
-    private ImageButton mGoogleBtn;
+    private ImageButton mGoogleBtn, mFbBtn;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 signIn();
             }
         });
+
 
         mIcon = (ImageView) findViewById(R.id.topImg);
         mIcon.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +156,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+                        Toast.makeText(LoginActivity.this, "Failed to connect to Google, check your internet connection.",
+                                Toast.LENGTH_LONG).show();
                     }
                 })
 

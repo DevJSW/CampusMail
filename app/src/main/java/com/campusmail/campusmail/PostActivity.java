@@ -236,19 +236,19 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                 this.finish();
 
                 return true;
-            default:
-                if (id == R.id.action_settings) {
+          //  default:
+          //      if (id == R.id.action_settings) {
 
-                    mPostImage.setVisibility(View.VISIBLE);
+           //         mPostImage.setVisibility(View.VISIBLE);
 
-                } else if (id == R.id.action_visibility) {
+           //     } else if (id == R.id.action_visibility) {
 
-                    Anonymous = true;
-                    menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_visibility_));
+           //         Anonymous = true;
+           //         menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_visibility_));
             }
 
                 return super.onOptionsItemSelected(item);
-        }
+        //}
     }
 
     @Override

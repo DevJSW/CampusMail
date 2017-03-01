@@ -376,8 +376,8 @@ public class MainActivity extends AppCompatActivity
                 });
 
 
-                mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
-                mQueryLikes.addListenerForSingleValueEvent(new ValueEventListener() {
+                //mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
+                mDatabaseLike.child(post_key).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         viewHolder.mLikeCount.setText(dataSnapshot.getChildrenCount() + "");
@@ -426,12 +426,12 @@ public class MainActivity extends AppCompatActivity
                                         if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
 
                                             mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).removeValue();
-                                            mDatabaseLike.child(post_key).child("post_key").removeValue();
+                                            //mDatabaseLike.child(post_key).child("post_key").removeValue();
                                             mProcessLike = false;
                                         }else {
 
                                             mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).setValue(post_name);
-                                            mDatabaseLike.child(post_key).child("post_key").setValue(post_key);
+                                           // mDatabaseLike.child(post_key).child("post_key").setValue(mAuth.getCurrentUser().getUid());
 
                                             mProcessLike = false;
 
