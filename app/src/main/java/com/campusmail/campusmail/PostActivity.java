@@ -2,6 +2,7 @@ package com.campusmail.campusmail;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ import java.util.Date;
 
 public class PostActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private String community_id = null;
+    private String visibility_id = null;
 
     private ImageView mPostImage;
     private Button mPostBtn;
@@ -131,7 +132,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 newPost.child("story").setValue(story_val);
-                                newPost.child("anonymous").setValue(Anonymous);
+                                newPost.child("anonymous").setValue(visibility_id);
                                 newPost.child("title").setValue(title_val);
                                 newPost.child("photo").setValue(downloadUrl.toString());
                                 newPost.child("name").setValue(dataSnapshot.child("name").getValue());
@@ -144,7 +145,6 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                                 newPost.child("uid").setValue(user_id);
                                 newPost.child("pin").setValue(uid);
                                 newPost.child("time").setValue(stringDate);
-                                newPost.child("reads").setValue("0");
                                 //newPost.child("community_sent").setValue(community);
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(PostActivity.this);
@@ -179,6 +179,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                         //newPost.child("title").setValue(title_val);
                         newPost.child("story").setValue(story_val);
                         newPost.child("title").setValue(title_val);
+                        newPost.child("anonymous").setValue(visibility_id);
                         newPost.child("name").setValue(dataSnapshot.child("name").getValue());
                         newPost.child("image").setValue(dataSnapshot.child("image").getValue());
                         newPost.child("community").setValue(dataSnapshot.child("community").getValue());
@@ -186,7 +187,6 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                         newPost.child("location").setValue(dataSnapshot.child("location").getValue());
                         newPost.child("campus").setValue(dataSnapshot.child("campus").getValue());
                         newPost.child("uid").setValue(user_id);
-                        newPost.child("reads").setValue("0");
                         newPost.child("phone").setValue(dataSnapshot.child("phone").getValue());
                         newPost.child("time").setValue(stringDate);
                        // newPost.child("community_sent").setValue(community);
@@ -236,19 +236,63 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                 this.finish();
 
                 return true;
-          //  default:
-          //      if (id == R.id.action_settings) {
+            default:
+                if (id == R.id.action_settings) {
 
-           //         mPostImage.setVisibility(View.VISIBLE);
+                    mPostImage.setVisibility(View.VISIBLE);
 
-           //     } else if (id == R.id.action_visibility) {
+                } else if (id == R.id.action_visibility) {
 
-           //         Anonymous = true;
-           //         menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_visibility_));
+                    AlertDialog diaBox = AskOption();
+                    diaBox.show();
+
             }
 
                 return super.onOptionsItemSelected(item);
-        //}
+        }
+    }
+
+    private AlertDialog AskOption() {
+
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(PostActivity.this)
+                //set message, title, and icon
+                .setTitle("Anonymous")
+                .setMessage("By clicking OK, this mail will posted as Anonymous with TOTAL Anonymity!")
+                .setIcon(R.drawable.ic_visibility_off_black_)
+
+
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //your deleting code
+
+                        Anonymous = true;
+                        menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_visibility_));
+
+                        if (Anonymous) {
+
+                            visibility_id = "anonymous";
+                            Anonymous = true;
+                        }
+
+                        dialog.dismiss();
+                    }
+
+                })
+
+
+
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
+
     }
 
     @Override

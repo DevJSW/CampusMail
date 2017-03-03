@@ -228,6 +228,20 @@ public class ProfileUserLettersActivity extends AppCompatActivity {
                 });
 
 
+                mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(post_key);
+                mQueryComments.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        viewHolder.mCommentCount.setText(dataSnapshot.getChildrenCount() + "");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
                 mQueryLikes = mDatabaseLike.orderByChild("post_key").equalTo(post_key);
                 mQueryLikes.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

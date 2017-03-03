@@ -273,9 +273,7 @@ public class MainActivity extends AppCompatActivity
 
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setStory(model.getStory());
-                viewHolder.setName(model.getName());
                 viewHolder.setTime(model.getTime());
-                viewHolder.setImage(getApplicationContext(), model.getImage());
 
                 viewHolder.setLikeBtn(post_key);
 
@@ -286,7 +284,6 @@ public class MainActivity extends AppCompatActivity
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
                         final String post_photo = (String) dataSnapshot.child("photo").getValue();
-                        final String post_story = (String) dataSnapshot.child("story").getValue();
 
                         if (post_photo != null) {
 
@@ -302,7 +299,40 @@ public class MainActivity extends AppCompatActivity
                             viewHolder.mProgressBar.setVisibility(View.GONE);
                             viewHolder.mInside.setVisibility(View.GONE);
 
-                            //viewHolder.mAttchBtn.setVisibility(View.GONE);
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+                mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        final String anonymous = (String) dataSnapshot.child("anonymous").getValue();
+
+                        if (anonymous != null) {
+
+                            viewHolder.mAnonymous.setVisibility(View.VISIBLE);
+                            viewHolder.mAnonymousText.setVisibility(View.VISIBLE);
+                            ImageView post_image = (ImageView) findViewById(R.id.post_image);
+                            post_image.setVisibility(View.GONE);
+
+                        } else {
+
+                            viewHolder.setImage(getApplicationContext(), model.getImage());
+                            viewHolder.setName(model.getName());
+                            viewHolder.mAnonymous.setVisibility(View.GONE);
+                            viewHolder.mAnonymousText.setVisibility(View.GONE);
 
                         }
 
@@ -313,6 +343,9 @@ public class MainActivity extends AppCompatActivity
 
                     }
                 });
+
+
+
 
                 mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
 
@@ -426,7 +459,6 @@ public class MainActivity extends AppCompatActivity
                                         if (dataSnapshot.child(post_key).hasChild(mAuth.getCurrentUser().getUid())) {
 
                                             mDatabaseLike.child(post_key).child(mAuth.getCurrentUser().getUid()).removeValue();
-                                            //mDatabaseLike.child(post_key).child("post_key").removeValue();
                                             mProcessLike = false;
                                         }else {
 
@@ -476,10 +508,10 @@ public class MainActivity extends AppCompatActivity
 
         View mView;
 
-        ImageView mChatBtn, mCall,mCardPhoto, mInside, mImage, mShareBtn;
+        ImageView mChatBtn, mCall,mCardPhoto, mInside, mImage, mShareBtn, mAnonymous;
         DatabaseReference mDatabaseLike;
         FirebaseAuth mAuth;
-        TextView mCommentCount, mLikeCount;
+        TextView mCommentCount, mLikeCount, mAnonymousText;
         DatabaseReference mDatabase;
         ProgressBar mProgressBar;
 
@@ -500,6 +532,8 @@ public class MainActivity extends AppCompatActivity
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
             mCommentCount = (TextView) mView.findViewById(R.id.commentCount);
             mLikeCount = (TextView) mView.findViewById(R.id.likeCount);
+            mAnonymousText = (TextView) mView.findViewById(R.id.anonymous_txt);
+            mAnonymous  = (ImageView) mView.findViewById(R.id.anonymous);
 
 
         }
@@ -624,6 +658,13 @@ public class MainActivity extends AppCompatActivity
                     Intent cardonClick = new Intent(MainActivity.this, LetterSearchActivity.class);
                     cardonClick.putExtra("community_id", community_id );
                     startActivity(cardonClick);
+
+                } else if (id == R.id.action_trending) {
+
+                    Intent cardonClick = new Intent(MainActivity.this, TrendsActivity.class);
+                    cardonClick.putExtra("community_id", community_id );
+                    startActivity(cardonClick);
+
                 }
 
                 return super.onOptionsItemSelected(item);
@@ -642,13 +683,13 @@ public class MainActivity extends AppCompatActivity
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 
-        } else if (id == R.id.nav_postmail) {
+        }else if (id == R.id.nav_postmail) {
 
             Intent intent = new Intent(MainActivity.this, FindComradesActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
 
-        } else if (id == R.id.nav_cm_search) {
+        }  else if (id == R.id.nav_cm_search) {
 
             Intent intent = new Intent(MainActivity.this, CMSearchActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

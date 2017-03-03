@@ -61,7 +61,21 @@
                android:layout_alignTop="@id/inside_view"
                android:layout_alignRight="@id/inside_view"
                android:scaleType="fitXY"
-               android:src="@drawable/ic_person_"
+               android:adjustViewBounds="true"
+               android:background="#00ffffff" />
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/anonymous"
+               android:layout_margin="5dp"
+               android:layout_alignBottom="@id/inside_view"
+               android:layout_alignLeft="@id/inside_view"
+               android:layout_alignTop="@id/inside_view"
+               android:layout_alignRight="@id/inside_view"
+               android:scaleType="fitXY"
+               android:src="@drawable/ic_visibility_off_black_2"
+               android:visibility="gone"
                android:adjustViewBounds="true"
                android:background="#00ffffff" />
 
