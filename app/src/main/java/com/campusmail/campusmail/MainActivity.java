@@ -274,7 +274,8 @@ public class MainActivity extends AppCompatActivity
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setStory(model.getStory());
                 viewHolder.setTime(model.getTime());
-
+                viewHolder.setImage(getApplicationContext(), model.getImage());
+                viewHolder.setName(model.getName());
                 viewHolder.setLikeBtn(post_key);
 
 
@@ -311,38 +312,6 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-
-
-                mDatabase.child(post_key).addValueEventListener(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        final String anonymous = (String) dataSnapshot.child("anonymous").getValue();
-
-                        if (anonymous != null) {
-
-                            viewHolder.mAnonymous.setVisibility(View.VISIBLE);
-                            viewHolder.mAnonymousText.setVisibility(View.VISIBLE);
-                            ImageView post_image = (ImageView) findViewById(R.id.post_image);
-                            post_image.setVisibility(View.GONE);
-
-                        } else {
-
-                            viewHolder.setImage(getApplicationContext(), model.getImage());
-                            viewHolder.setName(model.getName());
-                            viewHolder.mAnonymous.setVisibility(View.GONE);
-                            viewHolder.mAnonymousText.setVisibility(View.GONE);
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
 
 
 

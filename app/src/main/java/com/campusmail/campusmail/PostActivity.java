@@ -2,7 +2,6 @@ package com.campusmail.campusmail;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -241,17 +240,11 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
 
                     mPostImage.setVisibility(View.VISIBLE);
 
-                } else if (id == R.id.action_visibility) {
-
-                    AlertDialog diaBox = AskOption();
-                    diaBox.show();
-
                 }
-
                 return super.onOptionsItemSelected(item);
         }
     }
-
+/*
     private AlertDialog AskOption() {
 
         AlertDialog myQuittingDialogBox =new AlertDialog.Builder(PostActivity.this)
@@ -294,7 +287,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     }
-
+*/
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 

@@ -3,7 +3,6 @@ package com.campusmail.campusmail;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -105,6 +104,8 @@ public class CommentsActivity extends AppCompatActivity {
         mCommentList.setLayoutManager(new LinearLayoutManager(this));
         mDatabaseComment = FirebaseDatabase.getInstance().getReference().child("Comments");
         mDatabaseComment.keepSynced(true);
+        mDatabase.keepSynced(true);
+        mDatabaseUser.keepSynced(true);
 
         mCommentField = (EditText) findViewById(R.id.commentField);
         mCommentBtn = (ImageButton) findViewById(R.id.commentBtn);
@@ -263,6 +264,8 @@ public class CommentsActivity extends AppCompatActivity {
 
                 viewHolder.setComment(model.getComment());
                 viewHolder.setTime(model.getTime());
+                viewHolder.setImage(getApplicationContext(), model.getImage());
+                viewHolder.setUsername(model.getName());
 
                 mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
 
@@ -281,37 +284,6 @@ public class CommentsActivity extends AppCompatActivity {
 
                         } else {
 
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
-
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        final String anonymous = (String) dataSnapshot.child("anonymous").getValue();
-
-                        if (anonymous != null) {
-
-                            viewHolder.mAnonymous.setVisibility(View.VISIBLE);
-                            viewHolder.mAnonymousText.setVisibility(View.VISIBLE);
-                            ImageView post_image = (ImageView) findViewById(R.id.post_image);
-                            post_image.setVisibility(View.GONE);
-
-                        } else {
-
-                            viewHolder.setImage(getApplicationContext(), model.getImage());
-                            viewHolder.setUsername(model.getName());
-                            viewHolder.mAnonymous.setVisibility(View.GONE);
-                            viewHolder.mAnonymousText.setVisibility(View.GONE);
 
                         }
 
@@ -483,17 +455,12 @@ public class CommentsActivity extends AppCompatActivity {
                     Intent cardonClick = new Intent(CommentsActivity.this, SendPhotoActivity.class);
                     cardonClick.putExtra("heartraise_id", mPostKey );
                     startActivity(cardonClick);
-                }else if (id == R.id.action_visibility) {
-
-                    AlertDialog diaBox = AskOption();
-                    diaBox.show();
-
                 }
 
                 return super.onOptionsItemSelected(item);
         }
     }
-
+/*
     private AlertDialog AskOption() {
 
         AlertDialog myQuittingDialogBox =new AlertDialog.Builder(CommentsActivity.this)
@@ -536,6 +503,6 @@ public class CommentsActivity extends AppCompatActivity {
 
 
     }
-
+*/
 
 }
