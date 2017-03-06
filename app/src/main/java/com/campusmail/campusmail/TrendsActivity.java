@@ -33,7 +33,8 @@ import java.util.Date;
 public class TrendsActivity extends AppCompatActivity {
 
     private String community_id = null;
-    private String user_community = null;
+    private String post_anonymous = null;
+    private String  user_community = null;
     private String post_name = null;
     private TextView mNoPostTxt;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -73,6 +74,7 @@ public class TrendsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Letters");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Letters");
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar2);
         mLettersList = (RecyclerView) findViewById(R.id.letters_list);
         mLettersList.setLayoutManager(new LinearLayoutManager(this));
@@ -85,7 +87,7 @@ public class TrendsActivity extends AppCompatActivity {
 
         Date date = new Date();
 
-        mQueryLetters = mDatabase.orderByChild("time").startAt(date.getTime()).limitToFirst(5);
+        mQueryLetters = mDatabase.orderByChild("time").startAt(date.getTime()).limitToLast(5);
 
 
 
@@ -220,6 +222,10 @@ public class TrendsActivity extends AppCompatActivity {
                     }
                 });
 
+
+
+
+
                 mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(post_key);
                 mQueryComments.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -314,7 +320,9 @@ public class TrendsActivity extends AppCompatActivity {
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Intent cardonClick = new Intent(TrendsActivity.this, OpenLetterActivity.class);
+                        cardonClick.putExtra("heartraise_id", post_key );
+                        startActivity(cardonClick);
 
                     }
 
@@ -335,8 +343,8 @@ public class TrendsActivity extends AppCompatActivity {
 
         View mView;
 
-        ImageView  mChatBtn, mCall, mCardPhoto, mInside, mImage, mDelete;
-        TextView mName;
+        ImageView  mChatBtn, mCall, mCardPhoto, mInside, mImage, mDelete, mAnonymous;
+        TextView mName,  mAnonymousText;
         DatabaseReference mDatabaseLike;
         FirebaseAuth mAuth;
         TextView mCommentCount, mLikeCount;
@@ -362,6 +370,8 @@ public class TrendsActivity extends AppCompatActivity {
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
             mCommentCount = (TextView) mView.findViewById(R.id.commentCount);
             mLikeCount = (TextView) mView.findViewById(R.id.likeCount);
+            mAnonymousText = (TextView) mView.findViewById(R.id.anonymous_txt);
+            mAnonymous  = (ImageView) mView.findViewById(R.id.anonymous);
 
 
         }

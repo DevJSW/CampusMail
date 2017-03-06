@@ -3,6 +3,7 @@ package com.campusmail.campusmail;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ import java.util.Date;
 public class CommentsActivity extends AppCompatActivity {
 
     private String mPostKey = null;
+    private String visibility_id = null;
     private String user_uid = null;
     private TextView mNoPostTxt;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -58,7 +60,11 @@ public class CommentsActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseCurrentPost;
     private Uri mImageUri = null;
     private static int GALLERY_REQUEST =1;
+    private boolean Anonymous = false;
+    private Menu menu;
     Context context = this;
+
+    private Query mQueryComments;
 
     int TAKE_PHOTO_CODE = 0;
     public static int count = 0;
@@ -109,6 +115,7 @@ public class CommentsActivity extends AppCompatActivity {
             }
         });
 
+
         mQueryPostComment.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -150,20 +157,7 @@ public class CommentsActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == TAKE_PHOTO_CODE && resultCode == RESULT_OK) {
-
-            //Log.d("CameraDemo", "Pic saved");
-
-        } else if(requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
-
-            mImageUri = data.getData();
-
-        }
-    }
 
     void refreshItems() {
         // Load items
@@ -196,12 +190,30 @@ public class CommentsActivity extends AppCompatActivity {
 
             final DatabaseReference newPost = mDatabaseComment.push();
 
+
+            mQueryComments = mDatabaseComment.orderByChild("post_key").equalTo(mPostKey);
+            mQueryComments.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    mDatabase.child(mPostKey).child("comments_val").setValue(dataSnapshot.getChildrenCount() + "");
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
             mDatabaseUser.addValueEventListener(new ValueEventListener() {
+
 
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                     newPost.child("comment").setValue(comment_val);
+                    newPost.child("anonymous").setValue(visibility_id);
                     newPost.child("uid").setValue(mCurrentUser.getUid());
                     newPost.child("name").setValue(dataSnapshot.child("name").getValue());
                     newPost.child("image").setValue(dataSnapshot.child("image").getValue());
@@ -250,8 +262,6 @@ public class CommentsActivity extends AppCompatActivity {
                 final String post_key = getRef(position).getKey();
 
                 viewHolder.setComment(model.getComment());
-                viewHolder.setImage(getApplicationContext(), model.getImage());
-                viewHolder.setUsername(model.getName());
                 viewHolder.setTime(model.getTime());
 
                 mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
@@ -282,6 +292,38 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 });
 
+                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        final String anonymous = (String) dataSnapshot.child("anonymous").getValue();
+
+                        if (anonymous != null) {
+
+                            viewHolder.mAnonymous.setVisibility(View.VISIBLE);
+                            viewHolder.mAnonymousText.setVisibility(View.VISIBLE);
+                            ImageView post_image = (ImageView) findViewById(R.id.post_image);
+                            post_image.setVisibility(View.GONE);
+
+                        } else {
+
+                            viewHolder.setImage(getApplicationContext(), model.getImage());
+                            viewHolder.setUsername(model.getName());
+                            viewHolder.mAnonymous.setVisibility(View.GONE);
+                            viewHolder.mAnonymousText.setVisibility(View.GONE);
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
 
                 viewHolder.mCardPhoto.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -294,13 +336,37 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 });
 
-                viewHolder.mImage.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                mDatabaseComment.child(post_key).addValueEventListener(new ValueEventListener() {
 
-                        Intent cardonClick = new Intent(CommentsActivity.this, ViewProfileActivity.class);
-                        cardonClick.putExtra("heartraise_id", post_key );
-                        startActivity(cardonClick);
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        final String anonymous = (String) dataSnapshot.child("anonymous").getValue();
+
+                        if (anonymous != null) {
+
+
+
+                        } else {
+
+                            viewHolder.mImage.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    Intent cardonClick = new Intent(CommentsActivity.this, ViewProfileActivity.class);
+                                    cardonClick.putExtra("heartraise_id", post_key );
+                                    startActivity(cardonClick);
+                                }
+                            });
+
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
 
@@ -316,7 +382,8 @@ public class CommentsActivity extends AppCompatActivity {
         View mView;
 
         DatabaseReference mDatabase;
-        ImageView mCardPhoto, mInside, mImage;
+        ImageView mCardPhoto, mInside, mImage, mAnonymous;
+        TextView  mAnonymousText;
         ProgressBar mProgressBar;
 
         public CommentViewHolder(View itemView) {
@@ -326,6 +393,8 @@ public class CommentsActivity extends AppCompatActivity {
             mCardPhoto = (ImageView) mView.findViewById(R.id.post_photo);
             mInside = (ImageView) mView.findViewById(R.id.inside_view2);
             mImage = (ImageView) mView.findViewById(R.id.post_image);
+            mAnonymousText = (TextView) mView.findViewById(R.id.anonymous_txt);
+            mAnonymous  = (ImageView) mView.findViewById(R.id.anonymous);
 
             mProgressBar = (ProgressBar) mView.findViewById(R.id.progressBar);
 
@@ -394,6 +463,7 @@ public class CommentsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.comment_menu, menu);
+        this.menu = menu;
         return true;
     }
 
@@ -413,10 +483,59 @@ public class CommentsActivity extends AppCompatActivity {
                     Intent cardonClick = new Intent(CommentsActivity.this, SendPhotoActivity.class);
                     cardonClick.putExtra("heartraise_id", mPostKey );
                     startActivity(cardonClick);
+                }else if (id == R.id.action_visibility) {
+
+                    AlertDialog diaBox = AskOption();
+                    diaBox.show();
+
                 }
 
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private AlertDialog AskOption() {
+
+        AlertDialog myQuittingDialogBox =new AlertDialog.Builder(CommentsActivity.this)
+                //set message, title, and icon
+                .setTitle("Anonymous")
+                .setMessage("By clicking OK, this mail will be posted as Anonymous with TOTAL Anonymity!")
+                .setIcon(R.drawable.ic_visibility_off_black_)
+
+
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        //your deleting code
+
+                        Anonymous = true;
+                        menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ic_visibility_));
+
+                        if (Anonymous) {
+
+                            visibility_id = "anonymous";
+                            Anonymous = false;
+                        }
+
+                        dialog.dismiss();
+                    }
+
+                })
+
+
+
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+
+                    }
+                })
+                .create();
+        return myQuittingDialogBox;
+
+
+    }
+
 
 }

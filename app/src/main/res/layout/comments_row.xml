@@ -20,7 +20,6 @@
             <ImageButton
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/ic_account_box_black_"
                 android:background="#00ffffff"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
@@ -31,12 +30,26 @@
             <ImageButton
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/ic_person_black_"
                 android:background="#00ffffff"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:layout_gravity="top"
                 android:id="@+id/post_image" />
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:id="@+id/anonymous"
+                android:layout_margin="5dp"
+                android:layout_alignBottom="@id/inside_view"
+                android:layout_alignLeft="@id/inside_view"
+                android:layout_alignTop="@id/inside_view"
+                android:layout_alignRight="@id/inside_view"
+                android:scaleType="fitXY"
+                android:src="@drawable/anonymous_icons"
+                android:visibility="gone"
+                android:adjustViewBounds="true"
+                android:background="#00ffffff" />
         </RelativeLayout>
 
 
@@ -56,26 +69,33 @@
             android:layout_marginRight="5dp"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
                 android:textSize="15dp"
                 android:id="@+id/post_username"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="25dp"
                 android:textStyle="bold" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/anonymous_txt"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:visibility="gone"
+                    android:text="Anonymous"/>
 
-
-            </RelativeLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

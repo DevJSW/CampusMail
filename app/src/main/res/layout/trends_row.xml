@@ -49,6 +49,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:orientation="horizontal">
 
         <TextView
@@ -65,11 +66,19 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textColor="@color/colorPrimary"
-               android:layout_marginRight="10dp"
                android:id="@+id/post_name"
                android:textSize="10dp"
-               android:layout_marginTop="5dp"
-               android:text="name"/>
+               android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/anonymous_txt"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="5dp"
+                android:textSize="10dp"
+                android:visibility="gone"
+                android:text="Anonymous"/>
 
 
             <com.github.curioustechizen.ago.RelativeTimeTextView
@@ -95,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
             android:orientation="vertical">
 
 
@@ -104,12 +114,24 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:id="@+id/post_image"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_account_box_black_"
                 android:adjustViewBounds="true"
                 android:layout_alignParentBottom="true"
                 android:background="#00ffffff"
                 android:scaleType="fitXY" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/anonymous"
+                android:layout_margin="2dp"
+                android:layout_alignBottom="@id/inside_view"
+                android:layout_alignLeft="@id/inside_view"
+                android:layout_alignTop="@id/inside_view"
+                android:layout_alignRight="@id/inside_view"
+                android:scaleType="fitXY"
+                android:src="@drawable/anonymous_icons"
+                android:visibility="gone"
+                android:adjustViewBounds="true"
+                android:background="#00ffffff" />
 
 
 

@@ -246,7 +246,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                     AlertDialog diaBox = AskOption();
                     diaBox.show();
 
-            }
+                }
 
                 return super.onOptionsItemSelected(item);
         }
@@ -257,7 +257,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
         AlertDialog myQuittingDialogBox =new AlertDialog.Builder(PostActivity.this)
                 //set message, title, and icon
                 .setTitle("Anonymous")
-                .setMessage("By clicking OK, this mail will posted as Anonymous with TOTAL Anonymity!")
+                .setMessage("By clicking OK, this mail will be posted as Anonymous with TOTAL Anonymity!")
                 .setIcon(R.drawable.ic_visibility_off_black_)
 
 

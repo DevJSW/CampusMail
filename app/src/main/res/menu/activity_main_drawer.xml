@@ -18,7 +18,7 @@
         <item
             android:id="@+id/nav_cm_search"
             android:icon="@drawable/ic_live_help_white_"
-            android:title="CM search" />
+            android:title="Q&amp;A Forum" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_"

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#201f1f"
+
     tools:context="com.campusmail.campusmail.OpenLetterWithPhotoActivity">
 
     <RelativeLayout
@@ -14,25 +14,54 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:gravity="right"
+
             android:layout_gravity="right"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
+            android:layout_margin="13dp"
             android:orientation="vertical">
 
 
+
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="47dp"
+                android:id="@+id/inside_view"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="9dp"
+                android:src="@drawable/frame"
+                android:adjustViewBounds="true"
+                android:background="#00ffffff"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/post_image"
-                android:layout_margin="4dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_person_"
+                android:layout_margin="5dp"
+                android:layout_alignBottom="@id/inside_view"
+                android:layout_alignLeft="@id/inside_view"
+                android:layout_alignTop="@id/inside_view"
+                android:layout_alignRight="@id/inside_view"
+                android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:background="#00ffffff" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/anonymous"
+                android:layout_margin="3dp"
+                android:layout_alignBottom="@id/inside_view"
+                android:layout_alignLeft="@id/inside_view"
+                android:layout_alignTop="@id/inside_view"
+                android:layout_alignRight="@id/inside_view"
+                android:scaleType="fitXY"
+                android:src="@drawable/anonymous_icons"
+                android:visibility="gone"
+                android:adjustViewBounds="true"
+                android:background="#00ffffff" />
 
         </RelativeLayout>
 
@@ -52,12 +81,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/inside_view"
+                android:layout_height="wrap_content"
+                android:id="@+id/inside_vie"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/frame"
                 android:adjustViewBounds="true"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:background="#00ffffff"
                 android:scaleType="fitXY" >
 
@@ -78,7 +109,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="17dp"
+                    android:textColor="@color/colorPrimary"
                     android:text="Dear"/>
 
             <TextView
@@ -86,13 +118,14 @@
                 android:layout_height="wrap_content"
                 android:text="post_title"
                 android:layout_marginLeft="5dp"
+                android:textSize="17dp"
                 android:id="@+id/post_title"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:layout_below="@+id/post_photo"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
+                    android:textSize="17dp"
                     android:text=","/>
 
             </LinearLayout>
@@ -102,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:text="post_story"
                 android:id="@+id/post_story"
-                android:textColor="#ffffff"
+                android:textSize="17dp"
                 android:layout_margin="10dp"
                 android:layout_below="@+id/liny"/>
 
