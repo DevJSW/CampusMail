@@ -87,7 +87,7 @@ public class TrendsActivity extends AppCompatActivity {
 
         Date date = new Date();
 
-        mQueryLetters = mDatabase.orderByChild("time").startAt(date.getTime()).limitToLast(5);
+        mQueryLetters = mDatabase.orderByChild("comments_val").limitToLast(5);
 
 
 
