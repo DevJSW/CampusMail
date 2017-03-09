@@ -86,6 +86,7 @@ public class OpenLetterActivity extends AppCompatActivity {
                 String post_title = (String) dataSnapshot.child("title").getValue();
                 String post_image = (String) dataSnapshot.child("image").getValue();
                 String post_story = (String) dataSnapshot.child("story").getValue();
+                setLikeBtn(mPostKey);
 
                 mPostStory.setText(post_story);
                 mPostTitle.setText(post_title);

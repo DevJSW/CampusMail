@@ -92,7 +92,6 @@
                 android:id="@+id/inside_view"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/ic_account_box_black_"
                 android:adjustViewBounds="true"
                 android:background="#00ffffff"
                 android:scaleType="fitXY" />

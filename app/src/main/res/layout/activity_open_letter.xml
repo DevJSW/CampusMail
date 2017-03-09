@@ -139,6 +139,7 @@
                 android:layout_margin="10dp"
                 android:layout_below="@+id/liny"/>
 
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,8 +162,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="26dp"
-                android:layout_height="22dp"
+                android:layout_width="30dp"
+                android:layout_height="27dp"
                 android:src="@drawable/ic_share_"
                 android:layout_marginTop="1dp"
                 android:scaleType="fitXY"
@@ -170,8 +171,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginRight="27dp"
+                android:layout_marginTop="6dp"
                 android:paddingLeft="2dp"
                 android:text="Share"/>
 
@@ -179,12 +180,12 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/likeCount"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="6dp"
                 android:paddingLeft="7dp"
                 android:text="0"/>
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="19dp"
+                android:layout_width="26dp"
+                android:layout_height="25dp"
                 android:src="@drawable/like_btn_black"
                 android:paddingTop="1dp"
                 android:id="@+id/buttonCall"
@@ -194,8 +195,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginRight="27dp"
+                android:layout_marginTop="6dp"
                 android:paddingLeft="2dp"
                 android:text="Likes"/>
 
@@ -203,14 +204,14 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/commentCount"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="6dp"
 
                 android:paddingLeft="7dp"
                 android:text="0"/>
 
             <ImageView
-                android:layout_width="19dp"
-                android:layout_height="19dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:id="@+id/chatBtn"
                 android:src="@drawable/chat"
                 android:scaleType="fitXY"/>
@@ -218,8 +219,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="6dp"
                 android:paddingLeft="4dp"
                 android:text="Comments"/>
 

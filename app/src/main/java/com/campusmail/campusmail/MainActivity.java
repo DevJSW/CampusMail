@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity
         mDatabaseLike.keepSynced(true);
         mDatabase.keepSynced(true);
         community_id =  getIntent().getExtras().getString("community_id");
-        mQueryLetters = mDatabase.orderByChild("community").equalTo(community_id);
+        mQueryLetters = mDatabase.orderByChild("community").equalTo(community_id).limitToLast(15);
 
 
 
